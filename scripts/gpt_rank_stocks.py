@@ -1,85 +1,56 @@
 import os
 import json
-import pandas as pd
 import openai
+import pandas as pd
 
-# ---- CONFIG ----
-STOCKS_FILE = "data/stocks.json"
-GPT_OUTPUT_FILE = "data/gpt_recommendations.json"
-CSV_OUTPUT = "output/ranked_stocks.csv"
-
-# Load API key from environment
+# Load API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def load_stocks():
-    """Load the stock dataset from JSON."""
-    if not os.path.exists(STOCKS_FILE):
-        raise FileNotFoundError(f"Missing file: {STOCKS_FILE}")
-    with open(STOCKS_FILE, "r") as f:
-        return json.load(f)
+# Load stock data
+with open("data/stocks.json", "r") as f:
+    stocks = json.load(f)
 
 def ask_gpt_for_ranking(stocks):
-    """Ask GPT to rank stocks based on fundamentals, sentiment, and growth potential."""
-    # Prepare stock symbols for context
-    stock_symbols = [s.get("symbol") for s in stocks[:50]]  # Limit to 50 to avoid token limits
+    # Convert stock data into a simple string for GPT
+    stock_list = "\n".join([f"{s['symbol']}: {s['price']}" for s in stocks])
 
     prompt = f"""
-    You are a financial analyst. Here is a list of stock symbols:
-    {', '.join(stock_symbols)}
+    You are a financial analyst. Based on the following stock prices, rank the top 10 stocks to invest in today.
+    Return the results in JSON format with keys: symbol, rank, and reasoning.
 
-    Rank these stocks based on:
-    - Growth potential
-    - Stability and fundamentals
-    - Market sentiment
-    - Risk vs reward
-
-    Return ONLY a valid JSON array where each element has:
-    {{
-        "symbol": "AAPL",
-        "score": 92,
-        "reason": "Strong growth potential, strong earnings, and solid fundamentals."
-    }}
+    Stock Data:
+    {stock_list}
     """
 
-    response = openai.ChatCompletion.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "system", "content": "You are a financial analyst."},
-                  {"role": "user", "content": prompt}],
-        temperature=0.3,
+    # Updated OpenAI API call
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful financial assistant."},
+            {"role": "user", "content": prompt}
+        ]
     )
 
+    reply = response.choices[0].message.content
+
     try:
-        recommendations = json.loads(response["choices"][0]["message"]["content"])
-    except json.JSONDecodeError:
-        raise ValueError("GPT did not return valid JSON. Check the API response.")
-    
-    return recommendations
-
-def save_rankings(recommendations):
-    """Save GPT recommendations to JSON and CSV."""
-    # Save JSON
-    os.makedirs(os.path.dirname(GPT_OUTPUT_FILE), exist_ok=True)
-    with open(GPT_OUTPUT_FILE, "w") as f:
-        json.dump(recommendations, f, indent=4)
-
-    # Convert to CSV
-    df = pd.DataFrame(recommendations)
-    os.makedirs(os.path.dirname(CSV_OUTPUT), exist_ok=True)
-    df.to_csv(CSV_OUTPUT, index=False)
-    print(f"Rankings saved to {CSV_OUTPUT}")
+        return json.loads(reply)
+    except:
+        # If GPT doesn't return clean JSON, wrap into one
+        return {"error": "Invalid GPT response", "raw": reply}
 
 def main():
-    print("🔄 Loading stock data...")
-    stocks = load_stocks()
-
+    print("📈 Loading stock data...")
     print("🤖 Asking GPT for stock rankings...")
+
     recommendations = ask_gpt_for_ranking(stocks)
 
-    print("💾 Saving results...")
-    save_rankings(recommendations)
+    # Save GPT recommendations
+    os.makedirs("data", exist_ok=True)
+    with open("data/gpt_recommendations.json", "w") as f:
+        json.dump(recommendations, f, indent=2)
 
-    print("✅ Done! Rankings generated successfully.")
+    print("✅ Saved GPT recommendations to data/gpt_recommendations.json")
 
 if __name__ == "__main__":
     main()
-
