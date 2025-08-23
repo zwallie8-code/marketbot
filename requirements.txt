@@ -5,3 +5,4 @@ pandas>=2.0.0
 numpy>=1.26.0
 requests>=2.32.0
 lxml
+openai>=1.0.0
