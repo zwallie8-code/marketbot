@@ -1,0 +1,62 @@
+name: auto_trade
+
+on:
+  workflow_run:
+    workflows: ["rank_stocks"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: auto-trade-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment: production      # protect with required reviewers
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 1 }
+
+      - name: Download artifacts from rank_stocks
+        uses: actions/download-artifact@v4
+        with:
+          name: gpt-recommendations
+          # ensure your rank_stocks.yml uploads this name
+          path: .
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pytz
+
+      - name: Safety prechecks
+        run: |
+          test -f gpt_recommendations.json
+          test -f output/market_metrics.json
+
+      - name: Dry-run / Live toggle
+        run: echo "DRY_RUN=${{ vars.DRY_RUN || 'true' }}" >> $GITHUB_ENV
+
+      - name: Execute auto-trader
+        env:
+          BROKER_KEY: ${{ secrets.BROKER_KEY }}
+          BROKER_SECRET: ${{ secrets.BROKER_SECRET }}
+          PAPER_TRADING: ${{ vars.PAPER_TRADING || 'true' }}
+          DRY_RUN: ${{ env.DRY_RUN }}
+          KILL_SWITCH: ${{ vars.KILL_SWITCH || 'false' }}
+        run: |
+          python auto_trade.py
+
+      - name: Upload placed orders log
+        uses: actions/upload-artifact@v4
+        with:
+          name: placed-orders
+          path: output/placed_orders.json
