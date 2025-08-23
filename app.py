@@ -215,3 +215,14 @@ def rank_top():
 # gunicorn entrypoint
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
+
+
+@app.route("/rankings")
+def rankings():
+    from flask import jsonify
+    import json, os
+    p = "data/gpt_recommendations.json"
+    if not os.path.exists(p):
+        return jsonify({"error":"rankings not found yet"}), 404
+    return jsonify(json.loads(open(p).read()))
