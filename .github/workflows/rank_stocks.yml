@@ -33,7 +33,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python scripts/rank_stocks.py
+          python scripts/gpt_rank_stocks.py
 
       # Step 5 — Upload ranking results as an artifact
       - name: Upload ranked stocks file
