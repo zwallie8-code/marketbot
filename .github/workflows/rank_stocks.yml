@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensures we have full history for merging
+          fetch-depth: 0  # Full history for merges
 
       # Step 2 — Set up Python
       - name: Set up Python
@@ -44,21 +44,34 @@ jobs:
           name: ranked-stocks
           path: output/ranked_stocks.csv
 
-      # Step 6 — Configure Git user
+      # Step 6 — Configure Git
       - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Step 7 — Fetch latest changes and merge before committing
-      - name: Fetch and merge latest changes
+      # Step 7 — Retry push logic (up to 3 attempts)
+      - name: Commit, merge, and push with retry
         run: |
-          git fetch origin main
-          git merge origin/main --strategy-option=ours
+          MAX_RETRIES=3
+          COUNT=0
+          until [ $COUNT -ge $MAX_RETRIES ]
+          do
+            echo "Attempt $((COUNT+1))/$MAX_RETRIES..."
+            git fetch origin main
+            git merge origin/main --strategy-option=ours || true
+            git add output/ranked_stocks.csv
+            git commit -m "Update ranked stocks [skip ci]" || echo "No changes to commit"
+            if git push origin main; then
+              echo "Push successful!"
+              break
+            fi
+            COUNT=$((COUNT+1))
+            echo "Push failed. Retrying in 5 seconds..."
+            sleep 5
+          done
 
-      # Step 8 — Commit and push results safely
-      - name: Commit and push results
-        run: |
-          git add output/ranked_stocks.csv
-          git commit -m "Update ranked stocks [skip ci]" || echo "No changes to commit"
-          git push origin main
+          if [ $COUNT -ge $MAX_RETRIES ]; then
+            echo "Push failed after $MAX_RETRIES attempts."
+            exit 1
+          fi
