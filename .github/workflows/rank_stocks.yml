@@ -1,7 +1,7 @@
 name: Rank Stocks with GPT
 
 on:
-  workflow_dispatch:  # Allow manual runs
+  workflow_dispatch:
   workflow_run:
     workflows: ["Update Stock Market Dataset"]
     types:
@@ -12,37 +12,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1 — Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2 — Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      # Step 3 — Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4 — Run ranking script with GPT (FIXED PATH)
       - name: Rank stocks with GPT
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python app.py
+          python scripts/gpt_rank_stocks.py
 
-      # Step 5 — Upload ranking results as an artifact (UPDATED to v4)
       - name: Upload ranked stocks file
         uses: actions/upload-artifact@v4
         with:
           name: ranked-stocks
           path: output/ranked_stocks.csv
 
-      # Step 6 — Commit & push the updated ranking results
       - name: Commit and push results
         run: |
           git config --global user.name "github-actions[bot]"
