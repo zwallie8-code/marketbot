@@ -15,6 +15,8 @@ jobs:
       # Step 1 — Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures we have full history for merging
 
       # Step 2 — Set up Python
       - name: Set up Python
@@ -42,11 +44,21 @@ jobs:
           name: ranked-stocks
           path: output/ranked_stocks.csv
 
-      # Step 6 — Commit & push the updated ranking results
-      - name: Commit and push results
+      # Step 6 — Configure Git user
+      - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Step 7 — Fetch latest changes and merge before committing
+      - name: Fetch and merge latest changes
+        run: |
+          git fetch origin main
+          git merge origin/main --strategy-option=ours
+
+      # Step 8 — Commit and push results safely
+      - name: Commit and push results
+        run: |
           git add output/ranked_stocks.csv
           git commit -m "Update ranked stocks [skip ci]" || echo "No changes to commit"
           git push origin main
