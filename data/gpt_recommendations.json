@@ -1,0 +1,107 @@
+{
+  "mode": "heuristic",
+  "updated_at": 1755973552,
+  "count_input": 503,
+  "ranked": [
+    {
+      "symbol": "MMM",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "AOS",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ABT",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ABBV",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ACN",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ADBE",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "AMD",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "AES",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "AFL",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "A",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "APD",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ABNB",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "AKAM",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ALB",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ARE",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ALGN",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ALLE",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "LNT",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "ALL",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    },
+    {
+      "symbol": "GOOGL",
+      "score": 0.0,
+      "reason": "Momentum/volatility heuristic (no GPT key)."
+    }
+  ]
+}
