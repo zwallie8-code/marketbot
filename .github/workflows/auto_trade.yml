@@ -1,62 +1,33 @@
-name: auto_trade
+name: Auto Trade Based on GPT
 
 on:
   workflow_run:
-    workflows: ["rank_stocks"]
-    types: [completed]
-
-permissions:
-  contents: read
-
-concurrency:
-  group: auto-trade-${{ github.ref }}
-  cancel-in-progress: false
+    workflows: ["Rank Stocks with GPT"]
+    types:
+      - completed
+  workflow_dispatch:
 
 jobs:
-  trade:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+  auto-trade:
     runs-on: ubuntu-latest
-    environment: production      # protect with required reviewers
-    steps:
-      - uses: actions/checkout@v4
-        with: { fetch-depth: 1 }
 
-      - name: Download artifacts from rank_stocks
-        uses: actions/download-artifact@v4
-        with:
-          name: gpt-recommendations
-          # ensure your rank_stocks.yml uploads this name
-          path: .
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
+        with:
+          python-version: "3.10"
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pytz
+          pip install -r requirements.txt
 
-      - name: Safety prechecks
-        run: |
-          test -f gpt_recommendations.json
-          test -f output/market_metrics.json
-
-      - name: Dry-run / Live toggle
-        run: echo "DRY_RUN=${{ vars.DRY_RUN || 'true' }}" >> $GITHUB_ENV
-
-      - name: Execute auto-trader
+      - name: Run Auto Trader
         env:
           BROKER_KEY: ${{ secrets.BROKER_KEY }}
           BROKER_SECRET: ${{ secrets.BROKER_SECRET }}
-          PAPER_TRADING: ${{ vars.PAPER_TRADING || 'true' }}
-          DRY_RUN: ${{ env.DRY_RUN }}
-          KILL_SWITCH: ${{ vars.KILL_SWITCH || 'false' }}
         run: |
-          python auto_trade.py
-
-      - name: Upload placed orders log
-        uses: actions/upload-artifact@v4
-        with:
-          name: placed-orders
-          path: output/placed_orders.json
+          python scripts/auto_trade.py
