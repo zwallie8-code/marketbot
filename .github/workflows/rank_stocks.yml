@@ -4,11 +4,15 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: ["Update Stock Market Dataset"]
-    types:
-      - completed
+    types: [completed]
+
+permissions:
+  contents: write
 
 jobs:
   rank-stocks:
+    # only run after upstream success, or when manually dispatched
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +33,11 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python scripts/gpt_rank_stocks.py
+          python scripts/gpt_rank_stocks.py \
+            --input data/stocks.json \
+            --out-json data/gpt_recommendations.json \
+            --out-csv output/ranked_stocks.csv \
+            --top 50
 
       - name: Upload ranked stocks file
         uses: actions/upload-artifact@v4
@@ -41,6 +49,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/ranked_stocks.csv
+          git add data/gpt_recommendations.json output/ranked_stocks.csv || true
           git commit -m "Update ranked stocks [skip ci]" || echo "No changes to commit"
-          git push origin main
+          git push origin ${{ github.ref_name }}
