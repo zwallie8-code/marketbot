@@ -1,29 +1,45 @@
-import os, time
-import requests
+import os
+import alpaca_trade_api as tradeapi
 
-class Broker:
-    def __init__(self, paper=True):
-        self.key = os.environ["BROKER_KEY"]
-        self.secret = os.environ["BROKER_SECRET"]
-        base = "https://paper-api.alpaca.markets" if paper else "https://api.alpaca.markets"
-        self.base = base
-        self.h = {"APCA-API-KEY-ID": self.key, "APCA-API-SECRET-KEY": self.secret}
+class BrokerAlpaca:
+    def __init__(self):
+        self.api_key = os.getenv("BROKER_KEY")
+        self.api_secret = os.getenv("BROKER_SECRET")
+        self.base_url = "https://paper-api.alpaca.markets"
+        self.api = None
 
-    def account(self):
-        return requests.get(self.base+"/v2/account", headers=self.h).json()
+    def authenticate(self):
+        self.api = tradeapi.REST(self.api_key, self.api_secret, self.base_url)
+        try:
+            account = self.api.get_account()
+            print(f"[Alpaca] Authenticated. Buying power: {account.buying_power}")
+        except Exception as e:
+            raise RuntimeError(f"Authentication failed: {e}")
 
-    def positions(self):
-        return requests.get(self.base+"/v2/positions", headers=self.h).json()
+    def get_positions(self):
+        return self.api.list_positions()
 
-    def place_order(self, symbol, qty, side, limit_price=None, stop_loss=None, take_profit=None):
-        o = {
-          "symbol": symbol, "qty": qty, "side": side, "type": "limit" if limit_price else "market",
-          "time_in_force": "day"
-        }
-        if limit_price: o["limit_price"]=str(limit_price)
-        if stop_loss or take_profit:
-            o["order_class"]="bracket"
-            if stop_loss:    o["stop_loss"]= {"stop_price": str(stop_loss)}
-            if take_profit:  o["take_profit"]={"limit_price": str(take_profit)}
-        r = requests.post(self.base+"/v2/orders", json=o, headers=self.h)
-        return r.json()
+    def get_balance(self):
+        return float(self.api.get_account().cash)
+
+    def place_order(self, ticker: str, qty: int, side: str = "buy"):
+        try:
+            order = self.api.submit_order(
+                symbol=ticker,
+                qty=qty,
+                side=side,
+                type="market",
+                time_in_force="gtc"
+            )
+            print(f"[Alpaca] Placed {side} order: {qty} x {ticker}")
+            return order
+        except Exception as e:
+            print(f"[Alpaca] Order failed for {ticker}: {e}")
+            return None
+
+    def cancel_order(self, order_id: str):
+        try:
+            self.api.cancel_order(order_id)
+            print(f"[Alpaca] Canceled order {order_id}")
+        except Exception as e:
+            print(f"[Alpaca] Failed to cancel order {order_id}: {e}")
