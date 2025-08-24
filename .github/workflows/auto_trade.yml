@@ -1,11 +1,10 @@
-name: Auto Trade Based on GPT
+name: Auto Trade with Alpaca
 
 on:
   workflow_run:
     workflows: ["Rank Stocks with GPT"]
     types:
       - completed
-  workflow_dispatch:
 
 jobs:
   auto-trade:
@@ -25,9 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Auto Trader
+      - name: Run auto-trader
         env:
-          BROKER_KEY: ${{ secrets.BROKER_KEY }}
-          BROKER_SECRET: ${{ secrets.BROKER_SECRET }}
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_API_SECRET: ${{ secrets.ALPACA_API_SECRET }}
+          ALPACA_ENDPOINT: ${{ secrets.ALPACA_ENDPOINT }}
         run: |
-          python scripts/auto_trade.py
+          python scripts/alpaca_trader.py
