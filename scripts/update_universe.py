@@ -1,71 +1,92 @@
 #!/usr/bin/env python3
 import os
+import time
 import json
-import yfinance as yf
+import requests
 
+POLYGON_API_KEY = os.getenv("POLYGON_API_KEY")
 STOCKS_FILE = "data/stocks.json"
+PAGE_SIZE = 200  # Polygon max per request
 
-# You can adjust how many stocks to fetch (max recommended: 2000)
-MAX_STOCKS = 500  
+def fetch_tickers():
+    """Fetch the complete list of active stock tickers from Polygon."""
+    tickers = []
+    url = f"https://api.polygon.io/v3/reference/tickers?market=stocks&active=true&limit={PAGE_SIZE}&apiKey={POLYGON_API_KEY}"
+    next_url = url
 
-# Predefined major tickers list from S&P 500 + Nasdaq + NYSE + ETF universes
-# You can extend this list if you want more coverage
-def load_ticker_list():
-    """Load a big list of tradable tickers from Yahoo."""
-    # Fetch top S&P 500 tickers as a start
-    sp500 = yf.Ticker("^GSPC").history(period="1d")
-    tickers = yf.download("^GSPC", period="1d")
-    del sp500, tickers  # Just a sanity check on API
-    # For now, we’ll start from a static list
-    # For full automation, we can integrate a Nasdaq ticker list fetcher later
-    return [
-        "AAPL", "MSFT", "GOOG", "AMZN", "META", "TSLA", "NVDA", "NFLX", "AMD", "INTC",
-        "BA", "DIS", "WMT", "PG", "XOM", "CVX", "JPM", "V", "MA", "KO"
-    ]  # Expandable manually or dynamically later
+    while next_url:
+        response = requests.get(next_url)
+        if response.status_code == 429:
+            print("⚠️ Hit Polygon rate limit. Sleeping for 12s...")
+            time.sleep(12)
+            continue
+
+        if response.status_code != 200:
+            print(f"❌ Failed to fetch tickers: {response.status_code} - {response.text}")
+            break
+
+        data = response.json()
+        tickers.extend(data.get("results", []))
+        next_url = data.get("next_url")
+        if next_url:
+            next_url += f"&apiKey={POLYGON_API_KEY}"
+
+    print(f"✅ Fetched {len(tickers)} tickers from Polygon")
+    return tickers
 
 
-def fetch_stock_details(symbol):
-    """Fetch the latest price + market cap from Yahoo Finance."""
+def fetch_stock_price(symbol):
+    """Fetch the latest close price for a given stock symbol from Polygon."""
+    url = f"https://api.polygon.io/v2/aggs/ticker/{symbol}/prev?apiKey={POLYGON_API_KEY}"
     try:
-        ticker = yf.Ticker(symbol)
-        info = ticker.info
+        response = requests.get(url)
+        if response.status_code == 429:
+            print("⚠️ Rate limit hit. Sleeping 12s...")
+            time.sleep(12)
+            return fetch_stock_price(symbol)
 
-        price = info.get("currentPrice") or info.get("regularMarketPrice")
-        market_cap = info.get("marketCap")
-
-        if price is None or market_cap is None:
-            print(f"⚠️ Skipping {symbol}: Missing price or market cap")
+        if response.status_code != 200:
+            print(f"⚠️ Failed {symbol}: {response.status_code}")
             return None
 
-        return {
-            "symbol": symbol,
-            "name": info.get("shortName", "Unknown"),
-            "market": "stocks",
-            "price": price,
-            "marketCap": market_cap
-        }
+        data = response.json()
+        results = data.get("results", [])
+        if not results:
+            return None
+        return results[0].get("c")  # Closing price
     except Exception as e:
         print(f"⚠️ Error fetching {symbol}: {e}")
         return None
 
 
-def build_stock_list():
-    """Build a full stock universe enriched with price & market cap."""
-    symbols = load_ticker_list()
+def build_stock_list(limit=300):
+    """Build stock universe with price + metadata."""
+    tickers = fetch_tickers()
     stocks = []
 
-    for i, symbol in enumerate(symbols[:MAX_STOCKS], start=1):
-        data = fetch_stock_details(symbol)
-        if data:
-            stocks.append(data)
-        if i % 10 == 0:
-            print(f"📦 Processed {i}/{len(symbols)} stocks")
+    for i, t in enumerate(tickers[:limit], start=1):
+        symbol = t.get("ticker")
+        name = t.get("name", "Unknown")
+        market = t.get("market", "stocks")
+
+        price = fetch_stock_price(symbol)
+
+        stocks.append({
+            "symbol": symbol,
+            "name": name,
+            "market": market,
+            "price": price if price else None,
+            "marketCap": t.get("market_cap", None)
+        })
+
+        if i % 25 == 0:
+            print(f"📦 Processed {i}/{limit} stocks")
 
     return stocks
 
 
 def save_stocks(stocks):
-    """Save valid stocks to JSON."""
+    """Save stocks to JSON."""
     os.makedirs(os.path.dirname(STOCKS_FILE), exist_ok=True)
     with open(STOCKS_FILE, "w") as f:
         json.dump(stocks, f, indent=2)
@@ -73,11 +94,11 @@ def save_stocks(stocks):
 
 
 def main():
-    print("🚀 Building stock universe...")
-    stocks = build_stock_list()
+    print("🚀 Fetching stock universe from Polygon...")
+    stocks = build_stock_list(limit=300)
 
     if not stocks:
-        print("❌ No valid stock data. Exiting.")
+        print("❌ No stock data fetched. Exiting.")
         return
 
     save_stocks(stocks)
