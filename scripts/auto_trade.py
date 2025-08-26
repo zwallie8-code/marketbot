@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 import os
+import sys
 import json
 from pathlib import Path
 from typing import Dict
 
-# ✅ FIX: Use absolute imports instead of relative ones for GitHub Actions
+# ✅ Force add project root to Python path for absolute imports
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+# ✅ Now imports will always work on GitHub Actions & locally
 from scripts.broker_alpaca import BrokerAlpaca
 from scripts.policy_engine import decide
 from scripts.utils import safe_price
 
-# Configurations
 RECS_FILE = os.getenv("RECS_FILE", "data/gpt_recommendations.json")
 EXIT_TH = float(os.getenv("EXIT_BELOW_CONFIDENCE", "0.5"))
 
@@ -23,7 +28,7 @@ def load_recommendations(path: str) -> Dict[str, float]:
     with open(p, "r") as f:
         data = json.load(f)
 
-    # Support multiple potential key formats
+    # Normalize structure in case the JSON format varies
     rows = data.get("top") or data.get("ranked") or data
     norm = {}
 
@@ -44,7 +49,6 @@ def main():
         print("⚠️ No recommendations found. Exiting.")
         return
 
-    # Initialize broker
     broker = BrokerAlpaca()
     broker.authenticate()
 
@@ -52,7 +56,7 @@ def main():
     active = broker.get_positions()
     print(f"💵 Cash=${cash:.2f} | Active positions: {list(active.keys())}")
 
-    # === EXIT POSITIONS BELOW THRESHOLD ===
+    # === EXIT POSITIONS ===
     for sym in list(active.keys()):
         score = recs.get(sym)
         if score is None or score < EXIT_TH:
