@@ -1,91 +1,42 @@
-#!/usr/bin/env python3
-import os
-import time
-import json
-import requests
+name: Update Universe
 
-POLYGON_API_KEY = os.getenv("POLYGON_API_KEY")
-STOCKS_FILE = "data/stocks.json"
-PAGE_SIZE = 200  # Polygon max per request
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * *"  # Runs every day at 12:00 UTC
 
-def fetch_tickers():
-    """Fetch the complete list of active stock tickers from Polygon."""
-    tickers = []
-    url = f"https://api.polygon.io/v3/reference/tickers?market=stocks&active=true&limit={PAGE_SIZE}&apiKey={POLYGON_API_KEY}"
-    next_url = url
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
 
-    while next_url:
-        response = requests.get(next_url)
-        if response.status_code == 429:
-            print("⚠️ Hit Polygon rate limit. Sleeping for 12s...")
-            time.sleep(12)
-            continue
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-        if response.status_code != 200:
-            print(f"❌ Failed to fetch tickers: {response.status_code} - {response.text}")
-            break
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-        data = response.json()
-        tickers.extend(data.get("results", []))
-        next_url = data.get("next_url")
-        if next_url:
-            next_url += f"&apiKey={POLYGON_API_KEY}"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    print(f"✅ Fetched {len(tickers)} tickers from Polygon")
-    return tickers
+      - name: Update stock universe via Polygon
+        run: |
+          echo "🚀 Fetching stock universe..."
+          python scripts/update_universe.py
 
+      - name: Rank stocks
+        run: |
+          echo "🏆 Ranking top stocks..."
+          python scripts/gpt_rank_stocks.py --top 20
 
-def fetch_stock_price(symbol):
-    """Fetch the latest close price for a given stock symbol from Polygon."""
-    url = f"https://api.polygon.io/v2/aggs/ticker/{symbol}/prev?apiKey={POLYGON_API_KEY}"
-    try:
-        response = requests.get(url)
-        if response.status_code == 429:
-            print("⚠️ Rate limit hit. Sleeping 12s...")
-            time.sleep(12)
-            return fetch_stock_price(symbol)
-
-        if response.status_code != 200:
-            print(f"⚠️ Failed {symbol}: {response.status_code}")
-            return None
-
-        data = response.json()
-        results = data.get("results", [])
-        if not results:
-            return None
-        return results[0].get("c")  # Closing price
-    except Exception as e:
-        print(f"⚠️ Error fetching {symbol}: {e}")
-        return None
-
-
-def build_stock_list(limit=300):
-    """Build stock universe with price + metadata."""
-    tickers = fetch_tickers()
-    stocks = []
-
-    for i, t in enumerate(tickers[:limit], start=1):
-        symbol = t.get("ticker")
-        name = t.get("name", "Unknown")
-        market = t.get("market", "stocks")
-
-        price = fetch_stock_price(symbol)
-
-        stocks.append({
-            "symbol": symbol,
-            "name": name,
-            "market": market,
-            "price": price if price else None,
-            "marketCap": t.get("market_cap", None)
-        })
-
-        if i % 25 == 0:
-            print(f"📦 Processed {i}/{limit} stocks")
-
-    return stocks
-
-
-def save_stocks(stocks):
-    """Save stocks to JSON."""
-    os.makedirs(os.path.dirname(STOCKS_FILE), exist_ok=True)
-    with open(S
+      - name: Commit updated datasets
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/stocks.json
+          git commit -m "Updated stock dataset [skip ci]" || echo "No changes to commit"
+          git push origin main
