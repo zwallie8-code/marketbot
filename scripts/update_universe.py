@@ -1,47 +1,48 @@
-import requests
-import json
-from pathlib import Path
 import os
+import json
+import requests
 
-API_KEY = os.getenv("FMP_API_KEY")  # Set in GitHub secrets
-OUTPUT_PATH = Path("data/stocks.json")
+# Load API key from environment variable
+FMP_API_KEY = os.getenv("FMP_API_KEY")
+if not FMP_API_KEY:
+    raise ValueError("Missing FMP_API_KEY. Set it in GitHub Secrets.")
 
-def fetch_sp500(limit=500):
-    print("Fetching S&P 500 stocks from FMP API...")
-    url = f"https://financialmodelingprep.com/api/v3/sp500_constituent?apikey={API_KEY}"
-    try:
-        response = requests.get(url, timeout=15)
-        response.raise_for_status()
-        data = response.json()
-        if not data:
-            raise ValueError("Empty response from FMP API")
+# Output path
+OUTPUT_FILE = "data/stocks.json"
 
-        stocks = []
-        for stock in data[:limit]:
-            stocks.append({
-                "symbol": stock["symbol"],
-                "name": stock["name"],
-                "sector": stock.get("sector", "N/A")
-            })
+def fetch_sp500_stocks():
+    """Fetches S&P 500 stock list from Financial Modeling Prep API."""
+    url = f"https://financialmodelingprep.com/api/v3/sp500_constituent?apikey={FMP_API_KEY}"
+    print(f"Fetching stocks from {url}...")
+    response = requests.get(url)
 
-        return stocks
+    if response.status_code != 200:
+        raise RuntimeError(f"FMP API failed! Status {response.status_code}: {response.text}")
 
-    except Exception as e:
-        print(f"⚠ Error fetching stocks: {e}")
-        return []
-
-def save_stocks(stocks):
+    stocks = response.json()
     if not stocks:
-        print("⚠ No stock data fetched. Skipping save.")
-        return
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_PATH, "w") as f:
-        json.dump(stocks, f, indent=2)
-    print(f"✅ Saved {len(stocks)} stocks to {OUTPUT_PATH}")
+        raise RuntimeError("No stock data received from FMP API.")
 
-def main():
-    stocks = fetch_sp500()
-    save_stocks(stocks)
+    # Clean & normalize data
+    cleaned_stocks = []
+    for stock in stocks:
+        cleaned_stocks.append({
+            "symbol": stock.get("symbol"),
+            "name": stock.get("name"),
+            "sector": stock.get("sector", "Unknown")
+        })
+
+    # Save to file
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(cleaned_stocks, f, indent=4)
+
+    print(f"✅ Saved {len(cleaned_stocks)} stocks to {OUTPUT_FILE}")
+
 
 if __name__ == "__main__":
-    main()
+    try:
+        fetch_sp500_stocks()
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        exit(1)
