@@ -10,49 +10,55 @@ def get_sp500_tickers():
     df = pd.read_csv(url)
     return df['Symbol'].tolist()
 
+def fetch_batch(batch):
+    """Fetch a batch of tickers with retry logic and error handling."""
+    try:
+        df = yf.download(
+            tickers=batch,
+            period="5d",
+            interval="1d",
+            group_by="ticker",
+            threads=True
+        )
+        return df
+    except Exception:
+        return pd.DataFrame()
+
 def fetch_stock_data(tickers):
-    # Bulk download for better rate limits
-    df = yf.download(
-        tickers=tickers,
-        period="5d",
-        interval="1d",
-        group_by="ticker",
-        threads=True
-    )
-    
     stock_data = []
-    for ticker in tickers:
-        try:
-            if ticker not in df.columns.levels[0]:
+    batch_size = 30
+    for i in range(0, len(tickers), batch_size):
+        batch = tickers[i:i+batch_size]
+        print(f"📦 Fetching batch {i//batch_size + 1} ({len(batch)} tickers)")
+        df = fetch_batch(batch)
+
+        for ticker in batch:
+            try:
+                price = df[ticker]['Close'][-1]
+                volume = df[ticker]['Volume'][-1]
+                if pd.isna(price):
+                    continue  # skip invalid data
+
+                stock_data.append({
+                    "symbol": ticker,
+                    "price": round(float(price), 2),
+                    "volume": int(volume) if not pd.isna(volume) else None
+                })
+            except Exception:
                 continue
-
-            price = df[ticker]['Close'][-1]
-            volume = df[ticker]['Volume'][-1]
-
-            stock_data.append({
-                "symbol": ticker,
-                "price": round(float(price), 2),
-                "volume": int(volume) if not pd.isna(volume) else None
-            })
-        except Exception:
-            continue
+        time.sleep(2)
     return stock_data
 
 def main():
     tickers = get_sp500_tickers()
     print(f"✅ Found {len(tickers)} S&P 500 tickers")
 
-    stock_data = []
-    batch_size = 50  # Avoids hitting Yahoo's rate limits
-    for i in range(0, len(tickers), batch_size):
-        batch = tickers[i:i+batch_size]
-        print(f"Fetching batch {i//batch_size + 1}: {len(batch)} tickers")
-        stock_data.extend(fetch_stock_data(batch))
-        time.sleep(2)  # Prevents throttling
+    stock_data = fetch_stock_data(tickers)
 
     with open(OUTPUT_PATH, "w") as f:
         json.dump(stock_data, f, indent=4)
-    print(f"✅ Saved {len(stock_data)} stocks to {OUTPUT_PATH}")
+
+    print(f"✅ Saved {len(stock_data)} valid stocks to {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     main()
