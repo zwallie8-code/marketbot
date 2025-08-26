@@ -1,97 +1,63 @@
 import os
-import time
 import json
 import requests
 
 POLYGON_API_KEY = os.getenv("POLYGON_API_KEY")
 STOCKS_FILE = "data/stocks.json"
 
-def fetch_tickers(limit=100):
-    """Fetch a list of tickers from Polygon API."""
-    url = f"https://api.polygon.io/v3/reference/tickers?market=stocks&active=true&limit={limit}&apiKey={POLYGON_API_KEY}"
-    print(f"🔹 Fetching tickers from: {url}")
-    response = requests.get(url)
+SNAPSHOT_URL = f"https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/tickers?apiKey={POLYGON_API_KEY}"
+
+def fetch_stocks():
+    """Fetch full snapshot of all US stocks with price + market cap."""
+    print(f"🚀 Fetching stock snapshot from Polygon...")
+    response = requests.get(SNAPSHOT_URL)
+
+    if response.status_code == 429:
+        print("⚠️ Rate limit hit — retrying in 15 seconds...")
+        import time
+        time.sleep(15)
+        return fetch_stocks()
 
     if response.status_code != 200:
-        print(f"❌ Failed to fetch tickers: {response.status_code} - {response.text}")
+        print(f"❌ Error fetching snapshot: {response.status_code} - {response.text}")
         return []
 
     data = response.json()
-    return data.get("results", [])
-
-
-def fetch_stock_details(symbol):
-    """Fetch the latest price + market cap for a given stock symbol."""
-    url = f"https://api.polygon.io/v2/aggs/ticker/{symbol}/prev?apiKey={POLYGON_API_KEY}"
-    try:
-        response = requests.get(url)
-        if response.status_code == 429:
-            print("⚠️ Rate limit hit. Sleeping 12s...")
-            time.sleep(12)
-            return fetch_stock_details(symbol)
-
-        if response.status_code != 200:
-            print(f"⚠️ Failed {symbol}: {response.status_code}")
-            return None
-
-        data = response.json()
-        results = data.get("results", [])
-        if not results:
-            return None
-
-        # Get latest close price from previous day
-        price = results[0].get("c", None)
-        return price
-    except Exception as e:
-        print(f"⚠️ Error fetching {symbol}: {e}")
-        return None
-
-
-def build_stock_list(limit=100):
-    """Fetch stocks and enrich with price + market cap."""
-    tickers = fetch_tickers(limit)
+    results = data.get("tickers", [])
     stocks = []
 
-    for i, t in enumerate(tickers, start=1):
-        symbol = t.get("ticker")
-        name = t.get("name", "Unknown")
-        market = t.get("market", "stocks")
+    for item in results:
+        try:
+            symbol = item.get("ticker")
+            name = item.get("name", "Unknown")
+            price = item.get("lastTrade", {}).get("p") or item.get("day", {}).get("c")
+            market_cap = item.get("marketCap", None)
 
-        # Fetch price for each stock
-        price = fetch_stock_details(symbol)
-
-        stocks.append({
-            "symbol": symbol,
-            "name": name,
-            "market": market,
-            "price": price if price else None,
-            "marketCap": t.get("market_cap", None)  # Fallback to Polygon field if available
-        })
-
-        if i % 10 == 0:
-            print(f"📦 Processed {i}/{len(tickers)} stocks")
+            stocks.append({
+                "symbol": symbol,
+                "name": name,
+                "price": price if price is not None else None,
+                "marketCap": market_cap if market_cap is not None else None
+            })
+        except Exception as e:
+            print(f"⚠️ Error parsing {item.get('ticker')}: {e}")
+            continue
 
     return stocks
 
-
 def save_stocks(stocks):
-    """Save stocks to JSON file."""
+    """Save stocks data to JSON."""
     os.makedirs(os.path.dirname(STOCKS_FILE), exist_ok=True)
     with open(STOCKS_FILE, "w") as f:
         json.dump(stocks, f, indent=2)
     print(f"✅ Saved {len(stocks)} stocks → {STOCKS_FILE}")
 
-
 def main():
-    print("🚀 Updating stock universe...")
-    stocks = build_stock_list(limit=100)
-
+    stocks = fetch_stocks()
     if not stocks:
-        print("❌ No stock data fetched. Exiting.")
+        print("❌ No stocks fetched. Exiting.")
         return
-
     save_stocks(stocks)
-
 
 if __name__ == "__main__":
     main()
