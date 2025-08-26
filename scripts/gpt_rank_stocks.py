@@ -10,18 +10,32 @@ def rank_stocks(limit=20):
         sys.exit(1)
 
     with open(DATA_PATH, "r") as f:
-        data = json.load(f)
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError:
+            print("ERROR: Invalid JSON format in stocks.json")
+            sys.exit(1)
 
-    if not data:
-        print("ERROR: No valid stock data found. Run update_universe first.")
+    if not isinstance(data, list) or not data:
+        print("ERROR: stocks.json is empty or not a list. Run update_universe first.")
         sys.exit(1)
 
-    ranked = sorted(data.items(), key=lambda x: x[1].get("marketCap", 0), reverse=True)
+    # Sort by marketCap if available, otherwise fallback to price
+    ranked = sorted(
+        data,
+        key=lambda x: x.get("marketCap", x.get("price", 0)),
+        reverse=True
+    )
+
     return ranked[:limit]
 
 if __name__ == "__main__":
     top = int(sys.argv[sys.argv.index("--top") + 1]) if "--top" in sys.argv else 20
     ranked = rank_stocks(top)
+
     print(f"✅ Ranked {len(ranked)} stocks:")
-    for ticker, info in ranked:
-        print(f"{ticker}: ${info['price']} | Market Cap: {info['marketCap']}")
+    for stock in ranked:
+        symbol = stock.get("symbol", "N/A")
+        price = stock.get("price", "N/A")
+        market_cap = stock.get("marketCap", "N/A")
+        print(f"{symbol}: ${price} | Market Cap: {market_cap}")
