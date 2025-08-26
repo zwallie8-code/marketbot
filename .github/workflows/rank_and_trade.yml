@@ -1,37 +1,37 @@
-name: Rank & Paper Trade
+name: Rank and Trade
+
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 14 * * 1-5"
+    - cron: "30 12 * * *"  # Runs after update_universe
 
 jobs:
   run:
     runs-on: ubuntu-latest
+    env:
+      FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+      ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-      - name: Install deps
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rank stocks using GPT
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Rank (GPT or heuristic)
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          echo "Ranking stocks..."
+          python scripts/gpt_rank_stock.py --input data/stocks.json --top 20
+
+      - name: Execute trading logic
         run: |
-          python scripts/gpt_rank_stocks.py --input data/stocks.json --top 20
-      - name: Paper trade via Alpaca
-        env:
-          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
-          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          ALPACA_BASE_URL: "https://paper-api.alpaca.markets"
-          DRY_RUN: "false"
-          MAX_PORTFOLIO_SIZE: "5"
-          MAX_POSITION_USD: "1000"
-          MIN_CONFIDENCE: "0.7"
-          EXIT_BELOW_CONFIDENCE: "0.5"
-          STOP_LOSS_PCT: "0.05"
-          TAKE_PROFIT_PCT: "0.1"
-        run: |
-          python -m scripts.auto_trade
+          echo "Executing trades..."
+          python scripts/auto_trade.py --mode paper
