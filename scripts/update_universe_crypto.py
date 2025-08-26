@@ -1,50 +1,53 @@
-import requests
+import os
 import json
-from pathlib import Path
+import requests
 
-OUTPUT_PATH = Path("data/crypto.json")
-DEX_API = "https://api.dexscreener.com/latest/dex/tokens"
+# Output path
+OUTPUT_FILE = "data/crypto.json"
 
-def fetch_top_tokens(limit=150):
-    print(f"Fetching top {limit} crypto tokens from Dex Screener...")
-    try:
-        response = requests.get(DEX_API, timeout=15)
-        response.raise_for_status()
-        data = response.json()
+def fetch_top_crypto():
+    """Fetches top crypto assets from CoinGecko."""
+    url = "https://api.coingecko.com/api/v3/coins/markets"
+    params = {
+        "vs_currency": "usd",
+        "order": "market_cap_desc",
+        "per_page": 50,
+        "page": 1,
+        "sparkline": False
+    }
+    print(f"Fetching top crypto from {url}...")
+    response = requests.get(url, params=params)
 
-        if "pairs" not in data:
-            raise ValueError("Unexpected response format from Dex Screener")
+    if response.status_code != 200:
+        raise RuntimeError(f"CoinGecko API failed! Status {response.status_code}: {response.text}")
 
-        tokens = []
-        for pair in data["pairs"][:limit]:
-            tokens.append({
-                "symbol": pair.get("baseToken", {}).get("symbol"),
-                "name": pair.get("baseToken", {}).get("name"),
-                "price_usd": float(pair.get("priceUsd", 0)),
-                "volume_24h": float(pair.get("volume", 0)),
-                "liquidity_usd": float(pair.get("liquidity", {}).get("usd", 0)),
-                "chain": pair.get("chainId"),
-                "dex_id": pair.get("dexId")
-            })
+    crypto_data = response.json()
+    if not crypto_data:
+        raise RuntimeError("No crypto data received from CoinGecko.")
 
-        return tokens
+    # Clean & normalize data
+    cleaned_crypto = []
+    for coin in crypto_data:
+        cleaned_crypto.append({
+            "id": coin.get("id"),
+            "symbol": coin.get("symbol").upper(),
+            "name": coin.get("name"),
+            "current_price": coin.get("current_price"),
+            "market_cap": coin.get("market_cap"),
+            "volume": coin.get("total_volume")
+        })
 
-    except Exception as e:
-        print(f"⚠ Error fetching crypto tokens: {e}")
-        return []
+    # Save to file
+    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(cleaned_crypto, f, indent=4)
 
-def save_tokens(tokens):
-    if not tokens:
-        print("⚠ No crypto data fetched. Skipping save.")
-        return
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_PATH, "w") as f:
-        json.dump(tokens, f, indent=2)
-    print(f"✅ Saved {len(tokens)} crypto tokens to {OUTPUT_PATH}")
+    print(f"✅ Saved {len(cleaned_crypto)} crypto assets to {OUTPUT_FILE}")
 
-def main():
-    tokens = fetch_top_tokens()
-    save_tokens(tokens)
 
 if __name__ == "__main__":
-    main()
+    try:
+        fetch_top_crypto()
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        exit(1)
