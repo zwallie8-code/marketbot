@@ -1,48 +1,44 @@
 import os
-import json
 import requests
+import json
 
-# Load API key from environment variable
-FMP_API_KEY = os.getenv("FMP_API_KEY")
-if not FMP_API_KEY:
-    raise ValueError("Missing FMP_API_KEY. Set it in GitHub Secrets.")
+POLYGON_API_KEY = os.getenv("POLYGON_API_KEY")
+STOCKS_FILE = "data/stocks.json"
 
-# Output path
-OUTPUT_FILE = "data/stocks.json"
-
-def fetch_sp500_stocks():
-    """Fetches S&P 500 stock list from Financial Modeling Prep API."""
-    url = f"https://financialmodelingprep.com/api/v3/sp500_constituent?apikey={FMP_API_KEY}"
-    print(f"Fetching stocks from {url}...")
+def fetch_stocks():
+    url = f"https://api.polygon.io/v3/reference/tickers?market=stocks&active=true&limit=500&apiKey={POLYGON_API_KEY}"
     response = requests.get(url)
 
     if response.status_code != 200:
-        raise RuntimeError(f"FMP API failed! Status {response.status_code}: {response.text}")
+        print(f"Error fetching stocks: {response.status_code} - {response.text}")
+        return []
 
-    stocks = response.json()
-    if not stocks:
-        raise RuntimeError("No stock data received from FMP API.")
+    data = response.json()
+    tickers = []
 
-    # Clean & normalize data
-    cleaned_stocks = []
-    for stock in stocks:
-        cleaned_stocks.append({
-            "symbol": stock.get("symbol"),
-            "name": stock.get("name"),
-            "sector": stock.get("sector", "Unknown")
+    for item in data.get("results", []):
+        tickers.append({
+            "symbol": item.get("ticker"),
+            "name": item.get("name"),
+            "market": item.get("market"),
         })
 
-    # Save to file
-    os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
-    with open(OUTPUT_FILE, "w") as f:
-        json.dump(cleaned_stocks, f, indent=4)
+    return tickers
 
-    print(f"✅ Saved {len(cleaned_stocks)} stocks to {OUTPUT_FILE}")
+def save_stocks(stocks):
+    with open(STOCKS_FILE, "w") as f:
+        json.dump(stocks, f, indent=2)
 
+def main():
+    print("Fetching stock universe from Polygon...")
+    stocks = fetch_stocks()
+
+    if not stocks:
+        print("No stock data fetched. Exiting.")
+        return
+
+    save_stocks(stocks)
+    print(f"✅ Successfully updated {len(stocks)} stocks in {STOCKS_FILE}")
 
 if __name__ == "__main__":
-    try:
-        fetch_sp500_stocks()
-    except Exception as e:
-        print(f"❌ Error: {e}")
-        exit(1)
+    main()
