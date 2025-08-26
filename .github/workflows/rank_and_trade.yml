@@ -1,37 +1,58 @@
 name: Rank and Trade
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Manual trigger
   schedule:
-    - cron: "30 12 * * *"  # Runs after update_universe
+    - cron: "0 14 * * 1-5"  # Runs every weekday at 2 PM UTC
 
 jobs:
-  run:
+  rank-and-trade:
     runs-on: ubuntu-latest
-    env:
-      FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
-      ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
-      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
     steps:
+      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      # 2. Set up Python
+      - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
+      # 3. Install dependencies
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Rank stocks using GPT
         run: |
-          echo "Ranking stocks..."
-          python scripts/gpt_rank_stock.py --input data/stocks.json --top 20
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
+      # 4. Update stock universe
+      - name: Update stock universe
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: |
+          echo "Fetching stock data..."
+          python scripts/update_universe.py --api_key $FMP_API_KEY
+
+      # 5. Update crypto universe
+      - name: Update crypto universe
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: |
+          echo "Fetching crypto data..."
+          python scripts/update_universe_crypto.py --api_key $FMP_API_KEY
+
+      # 6. Rank stocks & crypto using GPT
+      - name: Rank stocks and crypto
+        run: |
+          echo "Ranking top assets..."
+          python scripts/gpt_rank_stocks.py --input data/stocks.json --top 20
+
+      # 7. Execute trading strategy
       - name: Execute trading logic
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
         run: |
-          echo "Executing trades..."
-          python scripts/auto_trade.py --mode paper
+          echo "Running trading engine..."
+          python scripts/whale/auto_trade.py
