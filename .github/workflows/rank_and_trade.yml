@@ -3,11 +3,12 @@ name: Rank and Trade
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */6 * * *" # Runs every 6 hours
 
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,26 +21,26 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Debug available files
-        run: |
-          echo "=== Listing scripts directory ==="
-          ls -R scripts/
-
-      - name: Update stock universe (Polygon)
+      # ✅ Force stocks.json to refresh from Polygon
+      - name: Update stock universe from Polygon
         run: python scripts/update_universe.py
         env:
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
 
-      - name: Show stocks.json content
+      - name: Verify stocks.json exists
         run: |
-          echo "=== First 20 lines of stocks.json ==="
-          head -n 20 data/stocks.json || echo "stocks.json not found"
+          if [ ! -s data/stocks.json ]; then
+            echo "stocks.json is missing or empty!"
+            exit 1
+          fi
 
       - name: Update crypto universe
         run: python scripts/update_universe_crypto.py
 
-      - name: Rank stocks & crypto
-        run: python scripts/gpt_rank_stocks.py
+      - name: Rank stocks & crypto using GPT
+        run: python scripts/gpt_rank_stocks.py --top 50
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Execute trading logic
         run: python scripts/auto_trade.py
