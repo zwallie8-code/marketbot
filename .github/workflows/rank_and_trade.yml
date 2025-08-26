@@ -3,7 +3,7 @@ name: Rank and Trade
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *" # Runs every 6 hours
+    - cron: "0 */6 * * *"
 
 jobs:
   run:
@@ -20,15 +20,25 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Update stock universe from Polygon
+      - name: Debug available files
+        run: |
+          echo "=== Listing scripts directory ==="
+          ls -R scripts/
+
+      - name: Update stock universe (Polygon)
         run: python scripts/update_universe.py
         env:
           POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
 
+      - name: Show stocks.json content
+        run: |
+          echo "=== First 20 lines of stocks.json ==="
+          head -n 20 data/stocks.json || echo "stocks.json not found"
+
       - name: Update crypto universe
         run: python scripts/update_universe_crypto.py
 
-      - name: Rank stocks & crypto using GPT
+      - name: Rank stocks & crypto
         run: python scripts/gpt_rank_stocks.py
 
       - name: Execute trading logic
