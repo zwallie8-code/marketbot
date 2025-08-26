@@ -1,72 +1,42 @@
-#!/usr/bin/env python3
-import json, time
-from pathlib import Path
-import pandas as pd
 import yfinance as yf
+import pandas as pd
+import json
 
-OUT = Path("data/stocks.json")
+OUTPUT_PATH = "data/stocks.json"
 
-def load_sp500():
-    tables = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
-    df = tables[0]
-    syms = df["Symbol"].astype(str).tolist()
-    syms_yf = [s.replace(".", "-") for s in syms]
-    return syms, syms_yf, df
+def get_sp500_tickers():
+    # Use a GitHub-hosted static CSV instead of scraping Wikipedia directly
+    url = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
+    df = pd.read_csv(url)
+    return df['Symbol'].tolist()
 
-def fetch_prices(symbols_yf):
-    return yf.download(
-        symbols_yf, period="6mo", interval="1d",
-        auto_adjust=True, threads=True, group_by="ticker", progress=False
-    )
-
-def latest_val(series):
-    try:
-        return float(series.dropna().iloc[-1])
-    except Exception:
-        return None
-
-def compute_rows(sp_syms, yf_syms, meta_df, px):
-    rows = []
-    for orig, yfs in zip(sp_syms, yf_syms):
+def fetch_stock_data(tickers):
+    data = []
+    for ticker in tickers:
         try:
-            df = px[yfs]
+            stock = yf.Ticker(ticker)
+            info = stock.info
+            data.append({
+                "symbol": ticker,
+                "name": info.get("shortName", ""),
+                "sector": info.get("sector", ""),
+                "price": info.get("currentPrice", None),
+                "volume": info.get("volume", None),
+                "market_cap": info.get("marketCap", None),
+                "pe_ratio": info.get("trailingPE", None),
+                "dividend_yield": info.get("dividendYield", None),
+            })
         except Exception:
             continue
-        close  = latest_val(df["Close"]) if isinstance(df, pd.DataFrame) else None
-        volume = latest_val(df["Volume"]) if isinstance(df, pd.DataFrame) else None
-
-        def ret(days):
-            try:
-                s = df["Close"].dropna()
-                c0 = float(s.iloc[-1])
-                cN = float(s.iloc[-days])
-                return round((c0 - cN) / cN, 4)
-            except Exception:
-                return None
-
-        rows.append({
-            "symbol": orig,
-            "yf_symbol": yfs,
-            "close": close,
-            "volume": volume,
-            "return_1d": ret(2),
-            "change_1d": ret(2),
-            "r_5d": ret(5),
-            "r_1m": ret(21),
-            "r_3m": ret(63),
-            "sector": str(meta_df.loc[meta_df['Symbol']==orig, 'GICS Sector'].values[0]) if orig in meta_df['Symbol'].values else "",
-            "industry": str(meta_df.loc[meta_df['Symbol']==orig, 'GICS Sub-Industry'].values[0]) if orig in meta_df['Symbol'].values else ""
-        })
-    return rows
+    return data
 
 def main():
-    sp_syms, yf_syms, meta_df = load_sp500()
-    px = fetch_prices(yf_syms)
-    rows = compute_rows(sp_syms, yf_syms, meta_df, px)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUT, "w") as f:
-        json.dump({"rows": rows, "updated_at": int(time.time())}, f, indent=2)
-    print(f"✅ Wrote {OUT.resolve()} with {len(rows)} rows")
+    tickers = get_sp500_tickers()
+    stock_data = fetch_stock_data(tickers)
+
+    with open(OUTPUT_PATH, "w") as f:
+        json.dump(stock_data, f, indent=4)
+    print(f"✅ Saved {len(stock_data)} stocks to {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     main()
