@@ -8,42 +8,33 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
-
-    # ✅ Expose all needed API keys globally
     env:
       POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
-      FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
       ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
       ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
 
     steps:
-      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # 4️⃣ Update stock universe using Polygon API
       - name: Update stock universe via Polygon
         run: |
           echo "🚀 Fetching stock universe..."
           python scripts/update_universe.py
 
-      # 5️⃣ Rank stocks using GPT
       - name: Rank stocks
         run: |
           echo "🏆 Ranking top stocks..."
           python scripts/gpt_rank_stocks.py --top 20
 
-      # 6️⃣ Commit updated datasets
       - name: Commit updated datasets
         run: |
           git config --global user.name "github-actions[bot]"
@@ -52,7 +43,6 @@ jobs:
           git commit -m "Updated stock dataset [skip ci]" || echo "No changes to commit"
           git push origin main
 
-      # 7️⃣ Execute trading logic — FIXED: Explicitly pass Alpaca keys
       - name: Execute trading bot
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
