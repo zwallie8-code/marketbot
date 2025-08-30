@@ -1771,6 +1771,13 @@
     "marketCap": null
   },
   {
+    "symbol": "AGMpH",
+    "name": "Federal Agricultural Mortgage Corporation 6.500% Non-Cumulative Preferred Stock, Series H",
+    "market": "stocks",
+    "price": 24.8,
+    "marketCap": null
+  },
+  {
     "symbol": "AGNC",
     "name": "AGNC Investment Corp. Common Stock",
     "market": "stocks",
@@ -2090,13 +2097,6 @@
     "name": "Senmiao Technology Limited Common Stock",
     "market": "stocks",
     "price": 2.36,
-    "marketCap": null
-  },
-  {
-    "symbol": "AII",
-    "name": "American Integrity Insurance Group, Inc.",
-    "market": "stocks",
-    "price": 19.99,
     "marketCap": null
   }
 ]
