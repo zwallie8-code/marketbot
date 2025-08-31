@@ -8,6 +8,7 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+
     env:
       POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
       ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
@@ -43,10 +44,12 @@ jobs:
           git commit -m "Updated stock dataset [skip ci]" || echo "No changes to commit"
           git push origin main
 
+      - name: Debug Environment Variables
+        run: |
+          echo "ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}"
+          echo "ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}"
+
       - name: Execute trading bot
-        env:
-          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
-          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
         run: |
           echo "🤖 Running trading bot..."
           python scripts/auto_trade.py
