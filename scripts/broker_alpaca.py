@@ -1,4 +1,17 @@
 import os
+
+class BrokerAlpaca:
+    def __init__(self):
+        self.api_key = os.getenv("ALPACA_API_KEY")
+        self.secret_key = os.getenv("ALPACA_SECRET_KEY")
+
+        if not self.api_key or not self.secret_key:
+            raise RuntimeError(
+                f"Missing Alpaca keys. "
+                f"ALPACA_API_KEY={self.api_key}, "
+                f"ALPACA_SECRET_KEY={'SET' if self.secret_key else 'MISSING'}"
+            )
+import os
 import alpaca_trade_api as tradeapi
 
 class BrokerAlpaca:
