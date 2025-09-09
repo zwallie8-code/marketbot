@@ -12,7 +12,8 @@ jobs:
     env:
       POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
       ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
-      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+      # ✅ Auto-fallback: Use ALPACA_SECRET_KEY if available, otherwise ALPACA_API_SECRET
+      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY || secrets.ALPACA_API_SECRET }}
 
     steps:
       - name: Checkout repository
@@ -46,10 +47,13 @@ jobs:
 
       - name: Debug Environment Variables
         run: |
-          echo "ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}"
-          echo "ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}"
+          echo "✅ ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}"
+          echo "✅ ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY || secrets.ALPACA_API_SECRET }}"
 
       - name: Execute trading bot
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY || secrets.ALPACA_API_SECRET }}
         run: |
           echo "🤖 Running trading bot..."
           python scripts/auto_trade.py
