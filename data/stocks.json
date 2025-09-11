@@ -735,6 +735,13 @@
     "marketCap": null
   },
   {
+    "symbol": "ACKY",
+    "name": "VistaShares Target 15 ACKtivist Distribution ETF",
+    "market": "stocks",
+    "price": 20.03,
+    "marketCap": null
+  },
+  {
     "symbol": "ACLC",
     "name": "American Century Large Cap Equity ETF",
     "market": "stocks",
@@ -1876,6 +1883,13 @@
     "marketCap": null
   },
   {
+    "symbol": "AGNCZ",
+    "name": "AGNC Investment Corp. 8.75% Series H Fixed-Rate Cumulative Redeemable Preferred Stock",
+    "market": "stocks",
+    "price": 25.38,
+    "marketCap": null
+  },
+  {
     "symbol": "AGNG",
     "name": "Global X Funds Global X Aging Population ETF",
     "market": "stocks",
@@ -2083,20 +2097,6 @@
     "name": "American Century Select High Yield ETF",
     "market": "stocks",
     "price": 46.755,
-    "marketCap": null
-  },
-  {
-    "symbol": "AI",
-    "name": "C3.ai, Inc.",
-    "market": "stocks",
-    "price": 15.61,
-    "marketCap": null
-  },
-  {
-    "symbol": "AIA",
-    "name": "iShares Asia 50 ETF",
-    "market": "stocks",
-    "price": 89.6619,
     "marketCap": null
   }
 ]
