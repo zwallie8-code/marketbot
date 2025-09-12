@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # ✅ Refresh stock universe from Polygon
+      # ✅ Force stocks.json to refresh from Polygon
       - name: Update stock universe from Polygon
         run: python scripts/update_universe.py
         env:
@@ -37,25 +37,19 @@ jobs:
       - name: Update crypto universe
         run: python scripts/update_universe_crypto.py
 
-      # 🐋 Whale signals from Dexscreener
-      - name: Fetch whale trades
-        run: python scripts/fetch_whales.py
-
-      - name: Rank whale signals with GPT
-        run: python scripts/gpt_rank_whales.py
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
-      # 🏆 Rank stocks & crypto with GPT
       - name: Rank stocks & crypto using GPT
         run: python scripts/gpt_rank_stocks.py --top 50
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-      # 🤖 Execute broker logic
+      # ✅ Merge GPT + Whale recommendations
+      - name: Merge recommendations
+        run: python scripts/merge_recommendations.py
+
       - name: Execute trading logic
         run: python scripts/auto_trade.py
         env:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
-          # 👇 fallback if repo uses ALPACA_API_SECRET instead of ALPACA_SECRET_KEY
+          # 👇 fallback in case your repo uses ALPACA_API_SECRET instead of ALPACA_SECRET_KEY
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY || secrets.ALPACA_API_SECRET }}
+          RECS_FILE: data/merged_recommendations.json
