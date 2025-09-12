@@ -1,55 +1,35 @@
 #!/usr/bin/env python3
-import json
-from pathlib import Path
+import argparse, json, os
 
-FILES = [
-    "data/gpt_recommendations.json",   # stock/crypto rankings
-    "data/whale_recs.json",            # whale trades (adjust if different)
-]
-OUT = "data/merged_recommendations.json"
-
-def load_json(path: str):
-    p = Path(path)
-    if not p.exists():
-        print(f"⚠️ Missing file: {path}")
+def load_json(path):
+    if not os.path.exists(path):
         return []
-    try:
-        with open(p, "r") as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"⚠️ Could not load {path}: {e}")
-        return []
+    with open(path, "r") as f:
+        try:
+            data = json.load(f)
+            if isinstance(data, dict):
+                return data.get("ranked") or data.get("top") or data.get("data") or []
+            if isinstance(data, list):
+                return data
+        except Exception:
+            return []
+    return []
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--inputs", nargs="+", required=True)
+    parser.add_argument("--output", required=True)
+    args = parser.parse_args()
+
     merged = []
-    for f in FILES:
-        data = load_json(f)
-        if isinstance(data, dict) and "ranked" in data:
-            merged.extend(data["ranked"])
-        elif isinstance(data, dict) and "top" in data:
-            merged.extend(data["top"])
-        elif isinstance(data, list):
-            merged.extend(data)
+    for inp in args.inputs:
+        merged.extend(load_json(inp))
 
-    if not merged:
-        print("❌ No recommendations found to merge")
-        return
+    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+    with open(args.output, "w") as f:
+        json.dump({"ranked": merged}, f, indent=2)
 
-    # remove duplicates by symbol (keep highest score)
-    by_symbol = {}
-    for rec in merged:
-        sym = rec.get("symbol") or rec.get("ticker")
-        score = rec.get("score") or rec.get("confidence") or 0
-        if not sym:
-            continue
-        if sym not in by_symbol or score > by_symbol[sym]["score"]:
-            by_symbol[sym] = {"symbol": sym, "score": score}
-
-    final = list(by_symbol.values())
-    with open(OUT, "w") as f:
-        json.dump(final, f, indent=2)
-
-    print(f"✅ Merged {len(final)} unique recommendations → {OUT}")
+    print(f"✅ Merged {len(merged)} recommendations into {args.output}")
 
 if __name__ == "__main__":
     main()
