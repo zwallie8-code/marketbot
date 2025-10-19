@@ -581,6 +581,13 @@
     "marketCap": null
   },
   {
+    "symbol": "ACCL",
+    "name": "Acco Group Holdings Limited Ordinary Shares",
+    "market": "stocks",
+    "price": 4.05,
+    "marketCap": null
+  },
+  {
     "symbol": "ACCO",
     "name": "Acco Brands Corporation",
     "market": "stocks",
@@ -2090,13 +2097,6 @@
     "name": "American Healthcare REIT, Inc.",
     "market": "stocks",
     "price": 43.39,
-    "marketCap": null
-  },
-  {
-    "symbol": "AHT",
-    "name": "Ashford Hospitality Trust, Inc.",
-    "market": "stocks",
-    "price": 5.11,
     "marketCap": null
   }
 ]
