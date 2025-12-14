@@ -1946,6 +1946,13 @@
     "marketCap": null
   },
   {
+    "symbol": "AGPU",
+    "name": "Axe Compute Inc. Common Stock",
+    "market": "stocks",
+    "price": 5.95,
+    "marketCap": null
+  },
+  {
     "symbol": "AGQ",
     "name": "ProShares Ultra Silver",
     "market": "stocks",
@@ -2090,13 +2097,6 @@
     "name": "American Healthcare REIT, Inc.",
     "market": "stocks",
     "price": 47.25,
-    "marketCap": null
-  },
-  {
-    "symbol": "AHT",
-    "name": "Ashford Hospitality Trust, Inc.",
-    "market": "stocks",
-    "price": 4.21,
     "marketCap": null
   }
 ]
