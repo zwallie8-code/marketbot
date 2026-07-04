@@ -1708,10 +1708,31 @@
     "marketCap": null
   },
   {
+    "symbol": "AESP",
+    "name": "Aeon Acquisition I Corp. Class A Ordinary Shares",
+    "market": "stocks",
+    "price": 9.87,
+    "marketCap": null
+  },
+  {
+    "symbol": "AESPR",
+    "name": "Aeon Acquisition I Corp. Rights",
+    "market": "stocks",
+    "price": 0.2,
+    "marketCap": null
+  },
+  {
     "symbol": "AESPU",
     "name": "Aeon Acquisition I Corp. Units",
     "market": "stocks",
     "price": 10.11,
+    "marketCap": null
+  },
+  {
+    "symbol": "AESPW",
+    "name": "Aeon Acquisition I Corp. Warrants",
+    "market": "stocks",
+    "price": 0.0651,
     "marketCap": null
   },
   {
@@ -2076,27 +2097,6 @@
     "name": "AgomAb Therapeutics NV American Depositary Shares",
     "market": "stocks",
     "price": 12.65,
-    "marketCap": null
-  },
-  {
-    "symbol": "AGMH",
-    "name": "AGM Group Holdings Inc. Class A Ordinary Shares",
-    "market": "stocks",
-    "price": 1.24,
-    "marketCap": null
-  },
-  {
-    "symbol": "AGMI",
-    "name": "Themes Silver Miners ETF",
-    "market": "stocks",
-    "price": 63.4784,
-    "marketCap": null
-  },
-  {
-    "symbol": "AGMpD",
-    "name": "Federal Agricultural Mortgage Corporation 5.700% Non-Cumulative Preferred Stock, Series D",
-    "market": "stocks",
-    "price": 21,
     "marketCap": null
   }
 ]
