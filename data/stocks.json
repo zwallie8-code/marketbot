@@ -801,7 +801,7 @@
     "symbol": "ACGR",
     "name": "American Century Large Cap Growth ETF",
     "market": "stocks",
-    "price": 67.7206,
+    "price": null,
     "marketCap": null
   },
   {
@@ -843,7 +843,7 @@
     "symbol": "ACHX",
     "name": "Corgi ACHR 2x Daily ETF",
     "market": "stocks",
-    "price": null,
+    "price": 22.9134,
     "marketCap": null
   },
   {
