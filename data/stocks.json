@@ -3,28 +3,28 @@
     "symbol": "A",
     "name": "Agilent Technologies Inc.",
     "market": "stocks",
-    "price": 169.09,
+    "price": 168.17,
     "marketCap": null
   },
   {
     "symbol": "AA",
     "name": "Alcoa Corporation",
     "market": "stocks",
-    "price": 42.48,
+    "price": 42.83,
     "marketCap": null
   },
   {
     "symbol": "AAA",
     "name": "Alternative Access First Priority CLO Bond ETF",
     "market": "stocks",
-    "price": 24.9028,
+    "price": 24.86,
     "marketCap": null
   },
   {
     "symbol": "AAAA",
     "name": "Amplius Aggressive Asset Allocation ETF",
     "market": "stocks",
-    "price": 30.7741,
+    "price": 30.84,
     "marketCap": null
   },
   {
@@ -38,49 +38,49 @@
     "symbol": "AAAD",
     "name": "PGIM AAA CLO Aggregate Duration ETF",
     "market": "stocks",
-    "price": 47.9779,
+    "price": 48.1209,
     "marketCap": null
   },
   {
     "symbol": "AAAP",
     "name": "Pacer Barings CLO Market Flex ETF",
     "market": "stocks",
-    "price": 25.35,
+    "price": 25.355,
     "marketCap": null
   },
   {
     "symbol": "AAAU",
     "name": "Goldman Sachs Physical Gold ETF Shares",
     "market": "stocks",
-    "price": 40.42,
+    "price": 40.72,
     "marketCap": null
   },
   {
     "symbol": "AAC",
     "name": "Ares Acquisition Corporation III",
     "market": "stocks",
-    "price": 10.05,
+    "price": 10.06,
     "marketCap": null
   },
   {
     "symbol": "AAC.U",
     "name": "Ares Acquisition Corporation III Units, each consisting of one Class A ordinary share and one-tenth of one redeemable warrant",
     "market": "stocks",
-    "price": 10.09,
+    "price": 10.1,
     "marketCap": null
   },
   {
     "symbol": "AAC.WS",
     "name": "Ares Acquisition Corporation III Redeemable warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
     "market": "stocks",
-    "price": 0.702,
+    "price": 0.5001,
     "marketCap": null
   },
   {
     "symbol": "AACG",
     "name": "ATA Creativity Global American Depositary Shares",
     "market": "stocks",
-    "price": 0.771,
+    "price": 0.7421,
     "marketCap": null
   },
   {
@@ -101,7 +101,7 @@
     "symbol": "AACIW",
     "name": "Armada Acquisition Corp. III Warrant",
     "market": "stocks",
-    "price": 0.24,
+    "price": 0.2292,
     "marketCap": null
   },
   {
@@ -122,7 +122,7 @@
     "symbol": "AACOW",
     "name": "Abony Acquisition Corp. I Warrants",
     "market": "stocks",
-    "price": 0.39,
+    "price": 0.37,
     "marketCap": null
   },
   {
@@ -136,357 +136,357 @@
     "symbol": "AACPR",
     "name": "Apogee Acquisition Corp Rights",
     "market": "stocks",
-    "price": 0.18,
+    "price": 0.17,
     "marketCap": null
   },
   {
     "symbol": "AACPU",
     "name": "Apogee Acquisition Corp Units",
     "market": "stocks",
-    "price": 10.66,
+    "price": 10.28,
     "marketCap": null
   },
   {
     "symbol": "AACPW",
     "name": "Apogee Acquisition Corp Warrant",
     "market": "stocks",
-    "price": 0.075,
+    "price": 0.07,
     "marketCap": null
   },
   {
     "symbol": "AADR",
     "name": "AdvisorShares Dorsey Wright ADR ETF",
     "market": "stocks",
-    "price": 81.0105,
+    "price": 80.6071,
     "marketCap": null
   },
   {
     "symbol": "AADX",
     "name": "Applied Aerospace & Defense, Inc.",
     "market": "stocks",
-    "price": 11.26,
+    "price": 11.15,
     "marketCap": null
   },
   {
     "symbol": "AAEQ",
     "name": "Alpha Architect US Equity 2 ETF",
     "market": "stocks",
-    "price": 55.8744,
+    "price": 55.5722,
     "marketCap": null
   },
   {
     "symbol": "AAL",
     "name": "American Airlines Group Inc.",
     "market": "stocks",
-    "price": 12.85,
+    "price": 12.8,
     "marketCap": null
   },
   {
     "symbol": "AALG",
     "name": "Leverage Shares 2X Long AAL Daily ETF",
     "market": "stocks",
-    "price": 9.5526,
+    "price": 9.5069,
     "marketCap": null
   },
   {
     "symbol": "AAME",
     "name": "Atlantic American Corp",
     "market": "stocks",
-    "price": 1.23,
+    "price": 1.21,
     "marketCap": null
   },
   {
     "symbol": "AAMI",
     "name": "Acadian Asset Management Inc.",
     "market": "stocks",
-    "price": 92.55,
+    "price": 93.3,
     "marketCap": null
   },
   {
     "symbol": "AAOG",
     "name": "Leverage Shares 2X Long AAOI Daily ETF",
     "market": "stocks",
-    "price": 3.03,
+    "price": 2.205,
     "marketCap": null
   },
   {
     "symbol": "AAOI",
     "name": "Applied Optoelectronics, Inc.",
     "market": "stocks",
-    "price": 122.54,
+    "price": 105.9,
     "marketCap": null
   },
   {
     "symbol": "AAON",
     "name": "Aaon Inc",
     "market": "stocks",
-    "price": 87.13,
+    "price": 85.95,
     "marketCap": null
   },
   {
     "symbol": "AAOX",
     "name": "Tradr 2X Long AAOI Daily ETF",
     "market": "stocks",
-    "price": 13.69,
+    "price": 9.95,
     "marketCap": null
   },
   {
     "symbol": "AAOZ",
     "name": "Tradr 2X Short AAOI Daily ETF",
     "market": "stocks",
-    "price": 8.63,
+    "price": 10.97,
     "marketCap": null
   },
   {
     "symbol": "AAP",
     "name": "ADVANCE AUTO PARTS INC",
     "market": "stocks",
-    "price": 41.2,
+    "price": 42.4,
     "marketCap": null
   },
   {
     "symbol": "AAPB",
     "name": "GraniteShares ETF Trust GraniteShares 2x Long AAPL Daily ETF",
     "market": "stocks",
-    "price": 44.2961,
+    "price": 45.2743,
     "marketCap": null
   },
   {
     "symbol": "AAPD",
     "name": "Direxion Shares ETF Trust Direxion Daily AAPL Bear 1X ETF",
     "market": "stocks",
-    "price": 10.19,
+    "price": 10.08,
     "marketCap": null
   },
   {
     "symbol": "AAPE",
     "name": "Leverage Shares 2X Long AAPL Daily ETF",
     "market": "stocks",
-    "price": 16.6,
+    "price": 16.955,
     "marketCap": null
   },
   {
     "symbol": "AAPG",
     "name": "Ascentage Pharma Group International American Depository Shares",
     "market": "stocks",
-    "price": 14.94,
+    "price": 14.55,
     "marketCap": null
   },
   {
     "symbol": "AAPL",
     "name": "Apple Inc.",
     "market": "stocks",
-    "price": 336.67,
+    "price": 340.42,
     "marketCap": null
   },
   {
     "symbol": "AAPR",
     "name": "Innovator Equity Defined Protection ETF - 2 Yr to April 2028",
     "market": "stocks",
-    "price": 29.8975,
+    "price": 29.885,
     "marketCap": null
   },
   {
     "symbol": "AAPU",
     "name": "Direxion Shares ETF Trust Direxion Daily AAPL Bull 2X ETF",
     "market": "stocks",
-    "price": 45.04,
+    "price": 46.11,
     "marketCap": null
   },
   {
     "symbol": "AAPW",
     "name": "Roundhill AAPL WeeklyPay ETF",
     "market": "stocks",
-    "price": 40.9646,
+    "price": 41.5302,
     "marketCap": null
   },
   {
     "symbol": "AAPX",
     "name": "T-Rex 2X Long Apple Daily Target ETF",
     "market": "stocks",
-    "price": 40.73,
+    "price": 41.7,
     "marketCap": null
   },
   {
     "symbol": "AAPY",
     "name": "Kurv Yield Premium Strategy Apple (AAPL) ETF",
     "market": "stocks",
-    "price": 27.8989,
+    "price": 28.17,
     "marketCap": null
   },
   {
     "symbol": "AARD",
     "name": "Aardvark Therapeutics, Inc. Common Stock",
     "market": "stocks",
-    "price": 4.96,
+    "price": 4.71,
     "marketCap": null
   },
   {
     "symbol": "AAT",
     "name": "AMERICAN ASSETS TRUST, INC.",
     "market": "stocks",
-    "price": 21.46,
+    "price": 21.61,
     "marketCap": null
   },
   {
     "symbol": "AAUA",
     "name": "Alpha Architect US Equity 3 ETF",
     "market": "stocks",
-    "price": 59.8425,
+    "price": 59.5026,
     "marketCap": null
   },
   {
     "symbol": "AAUB",
     "name": "Alpha Architect US Equity 4 ETF",
     "market": "stocks",
-    "price": 52.0602,
+    "price": 51.7006,
     "marketCap": null
   },
   {
     "symbol": "AAUC",
     "name": "Allied Gold Corporation",
     "market": "stocks",
-    "price": 19.58,
+    "price": 19.63,
     "marketCap": null
   },
   {
     "symbol": "AAUS",
     "name": "Alpha Architect US Equity ETF",
     "market": "stocks",
-    "price": 62.7988,
+    "price": 62.466,
     "marketCap": null
   },
   {
     "symbol": "AAVM",
     "name": "EA Series Trust Alpha Architect Global Factor Equity ETF",
     "market": "stocks",
-    "price": 33.5804,
+    "price": 33.7577,
     "marketCap": null
   },
   {
     "symbol": "AAXJ",
     "name": "iShares MSCI All Country Asia ex Japan ETF",
     "market": "stocks",
-    "price": 116.83,
+    "price": 114.47,
     "marketCap": null
   },
   {
     "symbol": "AB",
     "name": "AllianceBernstein Holding, L.P.",
     "market": "stocks",
-    "price": 35.1,
+    "price": 35.3,
     "marketCap": null
   },
   {
     "symbol": "ABAT",
     "name": "American Battery Technology Company Common Stock",
     "market": "stocks",
-    "price": 2.09,
+    "price": 2.05,
     "marketCap": null
   },
   {
     "symbol": "ABBV",
     "name": "ABBVIE INC.",
     "market": "stocks",
-    "price": 271.36,
+    "price": 272.42,
     "marketCap": null
   },
   {
     "symbol": "ABCB",
     "name": "Ameris Bancorp",
     "market": "stocks",
-    "price": 78.87,
+    "price": 79.66,
     "marketCap": null
   },
   {
     "symbol": "ABCL",
     "name": "AbCellera Biologics Inc. Common Shares",
     "market": "stocks",
-    "price": 12.83,
+    "price": 12.02,
     "marketCap": null
   },
   {
     "symbol": "ABCS",
     "name": "Alpha Blue Capital US Small-Mid Cap Dynamic ETF",
     "market": "stocks",
-    "price": 33.7849,
+    "price": 34.1081,
     "marketCap": null
   },
   {
     "symbol": "ABEO",
     "name": "Abeona Therapeutics Inc. Common Stock",
     "market": "stocks",
-    "price": 5.08,
+    "price": 4.96,
     "marketCap": null
   },
   {
     "symbol": "ABEQ",
     "name": "Absolute Select Value ETF",
     "market": "stocks",
-    "price": 37.34,
+    "price": 37.77,
     "marketCap": null
   },
   {
     "symbol": "ABEV",
     "name": "AMBEV S.A.",
     "market": "stocks",
-    "price": 3.15,
+    "price": 3.19,
     "marketCap": null
   },
   {
     "symbol": "ABFL",
     "name": "Abacus FCF Leaders ETF",
     "market": "stocks",
-    "price": 81.5445,
+    "price": 81.45,
     "marketCap": null
   },
   {
     "symbol": "ABG",
     "name": "Asbury Automotive Group, Inc.",
     "market": "stocks",
-    "price": 167.77,
+    "price": 168.96,
     "marketCap": null
   },
   {
     "symbol": "ABI",
     "name": "VictoryShares Pioneer Asset-Based Income ETF",
     "market": "stocks",
-    "price": 24.5839,
+    "price": 24.5204,
     "marketCap": null
   },
   {
     "symbol": "ABIG",
     "name": "Argent Large Cap ETF",
     "market": "stocks",
-    "price": 36.0954,
+    "price": 35.855,
     "marketCap": null
   },
   {
     "symbol": "ABLD",
     "name": "Abacus FCF Real Assets Leaders ETF",
     "market": "stocks",
-    "price": 30.68,
+    "price": 30.92,
     "marketCap": null
   },
   {
     "symbol": "ABLG",
     "name": "Abacus FCF International Leaders ETF",
     "market": "stocks",
-    "price": 30.6505,
+    "price": 30.33,
     "marketCap": null
   },
   {
     "symbol": "ABLS",
     "name": "Abacus FCF Small Cap Leaders ETF",
     "market": "stocks",
-    "price": 21.0094,
+    "price": 21.2124,
     "marketCap": null
   },
   {
     "symbol": "ABLV",
     "name": "Able View Global Inc. Class B Ordinary Shares",
     "market": "stocks",
-    "price": 2.53,
+    "price": 2.2475,
     "marketCap": null
   },
   {
@@ -500,21 +500,21 @@
     "symbol": "ABM",
     "name": "ABM Industries, Inc.",
     "market": "stocks",
-    "price": 48.75,
+    "price": 49.89,
     "marketCap": null
   },
   {
     "symbol": "ABNB",
     "name": "Airbnb, Inc. Class A Common Stock",
     "market": "stocks",
-    "price": 160.63,
+    "price": 163.23,
     "marketCap": null
   },
   {
     "symbol": "ABND",
     "name": "American Century Core Plus Income ETF",
     "market": "stocks",
-    "price": 41.5287,
+    "price": 41.6555,
     "marketCap": null
   },
   {
@@ -528,119 +528,119 @@
     "symbol": "ABOT",
     "name": "Abacus FCF Innovation Leaders ETF",
     "market": "stocks",
-    "price": 44.5298,
+    "price": 44.7687,
     "marketCap": null
   },
   {
     "symbol": "ABR",
     "name": "Arbor Realty Trust, Inc.",
     "market": "stocks",
-    "price": 3.25,
+    "price": 3.09,
     "marketCap": null
   },
   {
     "symbol": "ABRpD",
     "name": "Arbor Realty Trust, Inc. 6.375% Series D Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per Share",
     "market": "stocks",
-    "price": 12.95,
+    "price": 12.87,
     "marketCap": null
   },
   {
     "symbol": "ABRpE",
     "name": "Arbor Realty Trust, Inc. 6.25% Series E Cumulative Redeemable Preferred Stock",
     "market": "stocks",
-    "price": 12.64,
+    "price": 12.4699,
     "marketCap": null
   },
   {
     "symbol": "ABRpF",
     "name": "Arbor Realty Trust, Inc. 6.25% Series F Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock, Liquidation Preference $25.00 per share",
     "market": "stocks",
-    "price": 17.19,
+    "price": 16.26,
     "marketCap": null
   },
   {
     "symbol": "ABSI",
     "name": "Absci Corporation Common Stock",
     "market": "stocks",
-    "price": 9.22,
+    "price": 8.94,
     "marketCap": null
   },
   {
     "symbol": "ABT",
     "name": "Abbott Laboratories",
     "market": "stocks",
-    "price": 98.73,
+    "price": 98.49,
     "marketCap": null
   },
   {
     "symbol": "ABTC",
     "name": "American Bitcoin Corp. Class A Common Stock",
     "market": "stocks",
-    "price": 8.22,
+    "price": 7.75,
     "marketCap": null
   },
   {
     "symbol": "ABTS",
     "name": "Abits Group Inc Ordinary Shares",
     "market": "stocks",
-    "price": 1.18,
+    "price": 1.2321,
     "marketCap": null
   },
   {
     "symbol": "ABUF",
     "name": "Aptus Laddered Buffer ETF",
     "market": "stocks",
-    "price": 28.0748,
+    "price": 28.0267,
     "marketCap": null
   },
   {
     "symbol": "ABUS",
     "name": "Arbutus Biopharma Corporation Common Stock",
     "market": "stocks",
-    "price": 4.29,
+    "price": 4.18,
     "marketCap": null
   },
   {
     "symbol": "ABVC",
     "name": "ABVC BioPharma, Inc. Common Stock",
     "market": "stocks",
-    "price": 1,
+    "price": 0.98,
     "marketCap": null
   },
   {
     "symbol": "ABVX",
     "name": "Abivax SA American Depositary Shares",
     "market": "stocks",
-    "price": 87.01,
+    "price": 89.05,
     "marketCap": null
   },
   {
     "symbol": "ABX",
     "name": "Abacus Global Management, Inc.",
     "market": "stocks",
-    "price": 8.29,
+    "price": 8.32,
     "marketCap": null
   },
   {
     "symbol": "ABXB",
     "name": "Abacus Flexible Bond Leaders ETF",
     "market": "stocks",
-    "price": 18.64,
+    "price": 18.65,
     "marketCap": null
   },
   {
     "symbol": "ABXL",
     "name": "Abacus Global Management, Inc. 9.875% Fixed Rate Senior Notes due 2028",
     "market": "stocks",
-    "price": 25.24,
+    "price": 25.28,
     "marketCap": null
   },
   {
     "symbol": "ACA",
     "name": "Arcosa, Inc. Common Stock",
     "market": "stocks",
-    "price": 146.4,
+    "price": 146.5,
     "marketCap": null
   },
   {
@@ -661,119 +661,119 @@
     "symbol": "ACAAW",
     "name": "Averin Capital Acquisition Corp. Warrants",
     "market": "stocks",
-    "price": 0.65,
+    "price": 0.7,
     "marketCap": null
   },
   {
     "symbol": "ACAD",
     "name": "Acadia Pharmaceuticals Inc.",
     "market": "stocks",
-    "price": 19.65,
+    "price": 19.58,
     "marketCap": null
   },
   {
     "symbol": "ACB",
     "name": "Aurora Cannabis Inc. Common Shares",
     "market": "stocks",
-    "price": 4.46,
+    "price": 4.43,
     "marketCap": null
   },
   {
     "symbol": "ACBE",
     "name": "Pacer Metaurus Enhanced Core Income Autocallable ETF",
     "market": "stocks",
-    "price": 25.37,
+    "price": 25.275,
     "marketCap": null
   },
   {
     "symbol": "ACBH",
     "name": "Pacer Metaurus High Income Autocallable ETF",
     "market": "stocks",
-    "price": 25.535,
+    "price": 25.415,
     "marketCap": null
   },
   {
     "symbol": "ACCL",
     "name": "Acco Group Holdings Limited Class A Ordinary Shares",
     "market": "stocks",
-    "price": 2.59,
+    "price": 2.5,
     "marketCap": null
   },
   {
     "symbol": "ACCO",
     "name": "Acco Brands Corporation",
     "market": "stocks",
-    "price": 4.42,
+    "price": 4.46,
     "marketCap": null
   },
   {
     "symbol": "ACCS",
     "name": "ACCESS Newswire Inc.",
     "market": "stocks",
-    "price": 4.8,
+    "price": 4.6,
     "marketCap": null
   },
   {
     "symbol": "ACCV",
     "name": "Accelevation Holdings Corp. Class A Ordinary Shares",
     "market": "stocks",
-    "price": 15.19,
+    "price": 15.66,
     "marketCap": null
   },
   {
     "symbol": "ACDC",
     "name": "ProFrac Holding Corp. Class A Common Stock",
     "market": "stocks",
-    "price": 4.77,
+    "price": 4.7,
     "marketCap": null
   },
   {
     "symbol": "ACEI",
     "name": "Innovator Equity Autocallable Income Strategy ETF",
     "market": "stocks",
-    "price": 24,
+    "price": 23.63,
     "marketCap": null
   },
   {
     "symbol": "ACEL",
     "name": "Accel Entertainment, Inc.",
     "market": "stocks",
-    "price": 10.94,
+    "price": 11.1,
     "marketCap": null
   },
   {
     "symbol": "ACEP",
     "name": "ARS Core Equity Portfolio ETF",
     "market": "stocks",
-    "price": 19.88,
+    "price": 19.9794,
     "marketCap": null
   },
   {
     "symbol": "ACES",
     "name": "ALPS Clean Energy ETF",
     "market": "stocks",
-    "price": 27.85,
+    "price": 27.61,
     "marketCap": null
   },
   {
     "symbol": "ACET",
     "name": "Adicet Bio, Inc. Common Stock",
     "market": "stocks",
-    "price": 6.18,
+    "price": 5.74,
     "marketCap": null
   },
   {
     "symbol": "ACFN",
     "name": "Acorn Energy, Inc. Common Stock",
     "market": "stocks",
-    "price": 18.7,
+    "price": 19.01,
     "marketCap": null
   },
   {
     "symbol": "ACGC",
     "name": "ACP Holdings Acquisition Corp. Class A Ordinary Shares",
     "market": "stocks",
-    "price": 10.055,
+    "price": 10.07,
     "marketCap": null
   },
   {
@@ -794,196 +794,196 @@
     "symbol": "ACGL",
     "name": "Arch Capital Group Ltd",
     "market": "stocks",
-    "price": 94.33,
+    "price": 96.08,
     "marketCap": null
   },
   {
     "symbol": "ACGLN",
     "name": "Arch Capital Group Ltd. Depositary Shares, each Representing a 1/1,000th Interest in a 4.550% Non-Cumulative Preferred Share, Series G",
     "market": "stocks",
-    "price": 15,
+    "price": 15.0052,
     "marketCap": null
   },
   {
     "symbol": "ACGLO",
     "name": "Arch Capital Group Ltd. Depositary Shares Each Representing 1/1,000th Interest in a Share of 5.45% Non-Cumulative Preferred Shares, Series F",
     "market": "stocks",
-    "price": 18.14,
+    "price": 18.22,
     "marketCap": null
   },
   {
     "symbol": "ACGO",
     "name": "Hartford Alpha Capture Growth ETF",
     "market": "stocks",
-    "price": 39.9482,
+    "price": 39.3687,
     "marketCap": null
   },
   {
     "symbol": "ACGR",
     "name": "American Century Large Cap Growth ETF",
     "market": "stocks",
-    "price": 72.9674,
+    "price": 72.3368,
     "marketCap": null
   },
   {
     "symbol": "ACH",
     "name": "Accendra Health, Inc.",
     "market": "stocks",
-    "price": 0.4729,
+    "price": 0.4432,
     "marketCap": null
   },
   {
     "symbol": "ACHC",
     "name": "Acadia Healthcare Company, Inc.",
     "market": "stocks",
-    "price": 29.23,
+    "price": 28.48,
     "marketCap": null
   },
   {
     "symbol": "ACHR",
     "name": "Archer Aviation Inc.",
     "market": "stocks",
-    "price": 4.67,
+    "price": 4.72,
     "marketCap": null
   },
   {
     "symbol": "ACHV",
     "name": "Achieve Life Sciences, Inc.",
     "market": "stocks",
-    "price": 7.24,
+    "price": 7.19,
     "marketCap": null
   },
   {
     "symbol": "ACHX",
     "name": "Corgi ACHR 2x Daily ETF",
     "market": "stocks",
-    "price": 20.4852,
+    "price": 20.983,
     "marketCap": null
   },
   {
     "symbol": "ACI",
     "name": "Albertsons Companies, Inc.",
     "market": "stocks",
-    "price": 11.74,
+    "price": 12.34,
     "marketCap": null
   },
   {
     "symbol": "ACIC",
     "name": "American Coastal Insurance Corporation Common Stock",
     "market": "stocks",
-    "price": 9.51,
+    "price": 9.83,
     "marketCap": null
   },
   {
     "symbol": "ACIG",
     "name": "Hartford Alpha Capture International Growth ETF",
     "market": "stocks",
-    "price": 39.9716,
+    "price": 39.6772,
     "marketCap": null
   },
   {
     "symbol": "ACII",
     "name": "Innovator Index Autocallable Income Strategy ETF",
     "market": "stocks",
-    "price": 25.34,
+    "price": 25.31,
     "marketCap": null
   },
   {
     "symbol": "ACIO",
     "name": "Aptus Collared Investment Opportunity ETF",
     "market": "stocks",
-    "price": 47.69,
+    "price": 47.45,
     "marketCap": null
   },
   {
     "symbol": "ACIU",
     "name": "AC Immune SA",
     "market": "stocks",
-    "price": 2.57,
+    "price": 2.55,
     "marketCap": null
   },
   {
     "symbol": "ACIW",
     "name": "ACI Worldwide, Inc.",
     "market": "stocks",
-    "price": 50.65,
+    "price": 51.07,
     "marketCap": null
   },
   {
     "symbol": "ACKY",
     "name": "VistaShares Target 15 ACKtivist Distribution ETF",
     "market": "stocks",
-    "price": 17.375,
+    "price": 17.4244,
     "marketCap": null
   },
   {
     "symbol": "ACLC",
     "name": "American Century Large Cap Equity ETF",
     "market": "stocks",
-    "price": 87.0716,
+    "price": 86.6577,
     "marketCap": null
   },
   {
     "symbol": "ACLO",
     "name": "TCW AAA CLO ETF",
     "market": "stocks",
-    "price": 50.4,
+    "price": 50.38,
     "marketCap": null
   },
   {
     "symbol": "ACLS",
     "name": "Axcelis Technologies Inc",
     "market": "stocks",
-    "price": 138.4,
+    "price": 133.48,
     "marketCap": null
   },
   {
     "symbol": "ACLZ",
     "name": "Corgi ACLS 2x Daily ETF",
     "market": "stocks",
-    "price": 13.0845,
+    "price": 12.1722,
     "marketCap": null
   },
   {
     "symbol": "ACM",
     "name": "Aecom",
     "market": "stocks",
-    "price": 58.28,
+    "price": 59.46,
     "marketCap": null
   },
   {
     "symbol": "ACMM",
     "name": "Corgi ACMR 2x Daily ETF",
     "market": "stocks",
-    "price": 9.9257,
+    "price": 9.3996,
     "marketCap": null
   },
   {
     "symbol": "ACMR",
     "name": "ACM Research, Inc. Class A Common Stock",
     "market": "stocks",
-    "price": 72.77,
+    "price": 70.8,
     "marketCap": null
   },
   {
     "symbol": "ACN",
     "name": "Accenture PLC",
     "market": "stocks",
-    "price": 196.64,
+    "price": 208.36,
     "marketCap": null
   },
   {
     "symbol": "ACNB",
     "name": "ACNB Corp",
     "market": "stocks",
-    "price": 63.12,
+    "price": 63.19,
     "marketCap": null
   },
   {
     "symbol": "ACNT",
     "name": "Ascent Industries Co. Common Stock",
     "market": "stocks",
-    "price": 13.6,
+    "price": 13.69,
     "marketCap": null
   },
   {
@@ -997,168 +997,168 @@
     "symbol": "ACOM",
     "name": "Harbor Active Commodity ETF",
     "market": "stocks",
-    "price": 24.0899,
+    "price": 24.4366,
     "marketCap": null
   },
   {
     "symbol": "ACON",
     "name": "Aclarion, Inc. Common Stock",
     "market": "stocks",
-    "price": 2.35,
+    "price": 2.31,
     "marketCap": null
   },
   {
     "symbol": "ACONW",
     "name": "Aclarion, Inc. Warrant",
     "market": "stocks",
-    "price": 0.0256,
+    "price": 0.0211,
     "marketCap": null
   },
   {
     "symbol": "ACP",
     "name": "abrdn Income Credit Strategies Fund",
     "market": "stocks",
-    "price": 4.37,
+    "price": 4.36,
     "marketCap": null
   },
   {
     "symbol": "ACPpA",
     "name": "abrdn Income Credit Strategies Fund  5.250% Series A Perpetual Preferred Stock",
     "market": "stocks",
-    "price": 17.87,
+    "price": 17.88,
     "marketCap": null
   },
   {
     "symbol": "ACQQ",
     "name": "ProShares Nasdaq-100 Autocallable Income ETF",
     "market": "stocks",
-    "price": 25.4176,
+    "price": 24.985,
     "marketCap": null
   },
   {
     "symbol": "ACR",
     "name": "ACRES Commercial Realty Corp.",
     "market": "stocks",
-    "price": 10.24,
+    "price": 10.21,
     "marketCap": null
   },
   {
     "symbol": "ACRE",
     "name": "Ares Commercial Real Estate Corporation",
     "market": "stocks",
-    "price": 3.65,
+    "price": 3.66,
     "marketCap": null
   },
   {
     "symbol": "ACRS",
     "name": "Aclaris Therapeutics, Inc.",
     "market": "stocks",
-    "price": 3.4,
+    "price": 3.79,
     "marketCap": null
   },
   {
     "symbol": "ACRT",
     "name": "ProShares Russell 2000 Autocallable Income ETF",
     "market": "stocks",
-    "price": 22.2419,
+    "price": 22.21,
     "marketCap": null
   },
   {
     "symbol": "ACRV",
     "name": "Acrivon Therapeutics, Inc. Common Stock",
     "market": "stocks",
-    "price": 1.88,
+    "price": 1.87,
     "marketCap": null
   },
   {
     "symbol": "ACRpC",
     "name": "ACRES Commercial Realty Corp. 8.625% Fixed-to-Floating Series C Cumulative Redeemable Preferred Stock, par value $0.001 per share",
     "market": "stocks",
-    "price": 20.17,
+    "price": 19.951,
     "marketCap": null
   },
   {
     "symbol": "ACRpD",
     "name": "ACRES Commercial Realty Corp. 7.875% Series D Cumulative Redeemable Preferred Stock",
     "market": "stocks",
-    "price": 15.008,
+    "price": 14.575,
     "marketCap": null
   },
   {
     "symbol": "ACSG",
     "name": "American Century Small Cap Growth Insights ETF",
     "market": "stocks",
-    "price": 45.9505,
+    "price": 45.7225,
     "marketCap": null
   },
   {
     "symbol": "ACSI",
     "name": "American Customer Satisfaction ETF",
     "market": "stocks",
-    "price": 75.8134,
+    "price": 76.3141,
     "marketCap": null
   },
   {
     "symbol": "ACSM",
     "name": "Hartford Alpha Capture SMID Cap ETF",
     "market": "stocks",
-    "price": 39.6399,
+    "price": 39.68,
     "marketCap": null
   },
   {
     "symbol": "ACSP",
     "name": "ProShares S&P 500 Autocallable Income ETF",
     "market": "stocks",
-    "price": 22.3476,
+    "price": 22.2128,
     "marketCap": null
   },
   {
     "symbol": "ACSV",
     "name": "American Century Small Cap Value Insights ETF",
     "market": "stocks",
-    "price": 46.9244,
+    "price": 47.2515,
     "marketCap": null
   },
   {
     "symbol": "ACT",
     "name": "Enact Holdings, Inc. Common Stock",
     "market": "stocks",
-    "price": 45.82,
+    "price": 46.64,
     "marketCap": null
   },
   {
     "symbol": "ACTG",
     "name": "Acacia Research Corporation",
     "market": "stocks",
-    "price": 4.355,
+    "price": 4.39,
     "marketCap": null
   },
   {
     "symbol": "ACTS",
     "name": "FIS Tactical Equity ETF",
     "market": "stocks",
-    "price": 26.1211,
+    "price": 25.854,
     "marketCap": null
   },
   {
     "symbol": "ACTU",
     "name": "Actuate Therapeutics, Inc. Common stock",
     "market": "stocks",
-    "price": 0.7242,
+    "price": 0.679,
     "marketCap": null
   },
   {
     "symbol": "ACU",
     "name": "Acme United Corporation",
     "market": "stocks",
-    "price": 61.98,
+    "price": 61.94,
     "marketCap": null
   },
   {
     "symbol": "ACV",
     "name": "Virtus Diversified Income & Convertible Fund",
     "market": "stocks",
-    "price": 24.7,
+    "price": 24.28,
     "marketCap": null
   },
   {
@@ -1172,84 +1172,84 @@
     "symbol": "ACVF",
     "name": "American Conservative Values ETF",
     "market": "stocks",
-    "price": 55.66,
+    "price": 55.49,
     "marketCap": null
   },
   {
     "symbol": "ACVT",
     "name": "Advent Convertible Bond ETF",
     "market": "stocks",
-    "price": 28.2322,
+    "price": 28.2015,
     "marketCap": null
   },
   {
     "symbol": "ACVU",
     "name": "Hartford Alpha Capture Value ETF",
     "market": "stocks",
-    "price": 31.4911,
+    "price": 31.5969,
     "marketCap": null
   },
   {
     "symbol": "ACWI",
     "name": "iShares MSCI ACWI ETF",
     "market": "stocks",
-    "price": 160.71,
+    "price": 159.79,
     "marketCap": null
   },
   {
     "symbol": "ACWV",
     "name": "iShares MSCI Global Min Vol Factor ETF",
     "market": "stocks",
-    "price": 124.24,
+    "price": 124.75,
     "marketCap": null
   },
   {
     "symbol": "ACWX",
     "name": "iShares MSCI ACWI ex US ETF",
     "market": "stocks",
-    "price": 75.47,
+    "price": 74.85,
     "marketCap": null
   },
   {
     "symbol": "ACXP",
     "name": "Acurx Pharmaceuticals, Inc. Common Stock",
     "market": "stocks",
-    "price": 1.3,
+    "price": 1.25,
     "marketCap": null
   },
   {
     "symbol": "ACYB",
     "name": "FT Vest Laddered Autocallable Buffer & Resilient Income ETF",
     "market": "stocks",
-    "price": 20.0199,
+    "price": 20.1412,
     "marketCap": null
   },
   {
     "symbol": "ACYN",
     "name": "FT Vest Laddered Autocallable Barrier & Income ETF",
     "market": "stocks",
-    "price": 20.76,
+    "price": 20.74,
     "marketCap": null
   },
   {
     "symbol": "ACYQ",
     "name": "FT Vest Autocallable Barrier & High Income ETF",
     "market": "stocks",
-    "price": 21.05,
+    "price": 20.97,
     "marketCap": null
   },
   {
     "symbol": "ACYS",
     "name": "FT Vest Laddered Autocallable Barrier & Resilient Income ETF",
     "market": "stocks",
-    "price": 20.49,
+    "price": 20.46,
     "marketCap": null
   },
   {
     "symbol": "AD",
     "name": "Array Digital Infrastructure, Inc.",
     "market": "stocks",
-    "price": 34.14,
+    "price": 33.66,
     "marketCap": null
   },
   {
@@ -1277,322 +1277,322 @@
     "symbol": "ADAG",
     "name": "Adagene Inc. American Depositary Shares",
     "market": "stocks",
-    "price": 2.81,
+    "price": 2.78,
     "marketCap": null
   },
   {
     "symbol": "ADAM",
     "name": "Adamas Trust, Inc. Common Stock",
     "market": "stocks",
-    "price": 7.49,
+    "price": 7.65,
     "marketCap": null
   },
   {
     "symbol": "ADAMG",
     "name": "Adamas Trust, Inc. 9.125% Senior Notes Due 2030",
     "market": "stocks",
-    "price": 24.24,
+    "price": 24.425,
     "marketCap": null
   },
   {
     "symbol": "ADAMH",
     "name": "Adamas Trust, Inc. 9.875% Senior Notes Due 2030",
     "market": "stocks",
-    "price": 24.775,
+    "price": 24.8001,
     "marketCap": null
   },
   {
     "symbol": "ADAMI",
     "name": "Adamas Trust, Inc. 9.125% Senior Notes Due 2029",
     "market": "stocks",
-    "price": 24.39,
+    "price": 24.6401,
     "marketCap": null
   },
   {
     "symbol": "ADAMK",
     "name": "Adamas Trust, Inc. 9.600% Senior Notes Due 2031",
     "market": "stocks",
-    "price": 24.475,
+    "price": 24.3,
     "marketCap": null
   },
   {
     "symbol": "ADAML",
     "name": "Adamas Trust, Inc. 6.875% Series F Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock, $0.01 par value per share",
     "market": "stocks",
-    "price": 24.16,
+    "price": 23.97,
     "marketCap": null
   },
   {
     "symbol": "ADAMM",
     "name": "Adamas Trust, Inc. 7.875% Series E Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock",
     "market": "stocks",
-    "price": 24.315,
+    "price": 24.39,
     "marketCap": null
   },
   {
     "symbol": "ADAMN",
     "name": "Adamas Trust, Inc. 8.00% Series D Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock",
     "market": "stocks",
-    "price": 23.56,
+    "price": 23.3,
     "marketCap": null
   },
   {
     "symbol": "ADAMO",
     "name": "Adamas Trust, Inc. 9.250% Senior Notes Due 2031",
     "market": "stocks",
-    "price": 24.0467,
+    "price": 24.15,
     "marketCap": null
   },
   {
     "symbol": "ADAMZ",
     "name": "Adamas Trust, Inc. 7.000% Series G Cumulative Redeemable Preferred Stock, $0.01 par value per share",
     "market": "stocks",
-    "price": 16.09,
+    "price": 15.8601,
     "marketCap": null
   },
   {
     "symbol": "ADBE",
     "name": "Adobe Inc.",
     "market": "stocks",
-    "price": 232.77,
+    "price": 241.05,
     "marketCap": null
   },
   {
     "symbol": "ADBG",
     "name": "Leverage Shares 2X Long ADBE Daily ETF",
     "market": "stocks",
-    "price": 3.5,
+    "price": 3.75,
     "marketCap": null
   },
   {
     "symbol": "ADBT",
     "name": "Advasa Holdings, Inc. Common Stock",
     "market": "stocks",
-    "price": 0.1245,
+    "price": 0.129,
     "marketCap": null
   },
   {
     "symbol": "ADBU",
     "name": "Direxion Daily ADBE Bull 2X ETF",
     "market": "stocks",
-    "price": 19.6211,
+    "price": 21.01,
     "marketCap": null
   },
   {
     "symbol": "ADC",
     "name": "Agree Realty Corporation",
     "market": "stocks",
-    "price": 65.16,
+    "price": 65.82,
     "marketCap": null
   },
   {
     "symbol": "ADCT",
     "name": "ADC Therapeutics SA",
     "market": "stocks",
-    "price": 1.42,
+    "price": 1.59,
     "marketCap": null
   },
   {
     "symbol": "ADCpA",
     "name": "Agree Realty Corporation Depositary Shares, each representing 1/1,000th of a 4.250% Series A Cumulative Redeemable Preferred Stock",
     "market": "stocks",
-    "price": 15.88,
+    "price": 15.79,
     "marketCap": null
   },
   {
     "symbol": "ADDS",
     "name": "Hedgeye Index Adds ETF",
     "market": "stocks",
-    "price": 25.8669,
+    "price": 25.8617,
     "marketCap": null
   },
   {
     "symbol": "ADEA",
     "name": "Adeia Inc. Common Stock",
     "market": "stocks",
-    "price": 24.31,
+    "price": 24.115,
     "marketCap": null
   },
   {
     "symbol": "ADGM",
     "name": "Adagio Medical Holdings, Inc Common Stock",
     "market": "stocks",
-    "price": 0.1338,
+    "price": 0.13,
     "marketCap": null
   },
   {
     "symbol": "ADI",
     "name": "Analog Devices, Inc.",
     "market": "stocks",
-    "price": 410.08,
+    "price": 405.93,
     "marketCap": null
   },
   {
     "symbol": "ADIG",
     "name": "ADI Global Distribution Inc.",
     "market": "stocks",
-    "price": 17.53,
+    "price": 17.2,
     "marketCap": null
   },
   {
     "symbol": "ADIL",
     "name": "Adial Pharmaceuticals, Inc",
     "market": "stocks",
-    "price": 3.99,
+    "price": 3.97,
     "marketCap": null
   },
   {
     "symbol": "ADIU",
     "name": "Leverage Shares 2X Long ADI Daily ETF",
     "market": "stocks",
-    "price": 12.6663,
+    "price": 12.3841,
     "marketCap": null
   },
   {
     "symbol": "ADIV",
     "name": "Guinness Atkinson Asia Pacific Dividend Builder ETF",
     "market": "stocks",
-    "price": 19.4408,
+    "price": 19.3349,
     "marketCap": null
   },
   {
     "symbol": "ADM",
     "name": "Archer Daniels Midland Company",
     "market": "stocks",
-    "price": 81.34,
+    "price": 82.45,
     "marketCap": null
   },
   {
     "symbol": "ADMA",
     "name": "ADMA Biologics, Inc.",
     "market": "stocks",
-    "price": 10.14,
+    "price": 10.33,
     "marketCap": null
   },
   {
     "symbol": "ADME",
     "name": "Aptus Behavioral Momentum ETF",
     "market": "stocks",
-    "price": 57.1216,
+    "price": 56.91,
     "marketCap": null
   },
   {
     "symbol": "ADNT",
     "name": "Adient plc Ordinary Shares",
     "market": "stocks",
-    "price": 17.55,
+    "price": 17.62,
     "marketCap": null
   },
   {
     "symbol": "ADP",
     "name": "Automatic Data Processing",
     "market": "stocks",
-    "price": 264,
+    "price": 270.73,
     "marketCap": null
   },
   {
     "symbol": "ADPT",
     "name": "Adaptive Biotechnologies Corporation Common Stock",
     "market": "stocks",
-    "price": 26.28,
+    "price": 26.09,
     "marketCap": null
   },
   {
     "symbol": "ADPV",
     "name": "Adaptiv Select ETF",
     "market": "stocks",
-    "price": 43.91,
+    "price": 43.8915,
     "marketCap": null
   },
   {
     "symbol": "ADRX",
     "name": "ADARx Pharmaceuticals, Inc. Common Stock",
     "market": "stocks",
-    "price": 17.33,
+    "price": 17.675,
     "marketCap": null
   },
   {
     "symbol": "ADSE",
     "name": "ADS-TEC ENERGY PLC Ordinary Shares",
     "market": "stocks",
-    "price": 9.69,
+    "price": 9.43,
     "marketCap": null
   },
   {
     "symbol": "ADSEW",
     "name": "ADS-TEC ENERGY PLC Warrant",
     "market": "stocks",
-    "price": 0.25,
+    "price": 0.239899,
     "marketCap": null
   },
   {
     "symbol": "ADSK",
     "name": "Autodesk Inc",
     "market": "stocks",
-    "price": 235.05,
+    "price": 233.6,
     "marketCap": null
   },
   {
     "symbol": "ADT",
     "name": "ADT Inc.",
     "market": "stocks",
-    "price": 6.3,
+    "price": 6.5,
     "marketCap": null
   },
   {
     "symbol": "ADTN",
     "name": "ADTRAN Holdings, Inc. Common Stock",
     "market": "stocks",
-    "price": 7.76,
+    "price": 7.49,
     "marketCap": null
   },
   {
     "symbol": "ADUR",
     "name": "Aduro Clean Technologies Inc. Common Stock",
     "market": "stocks",
-    "price": 11.145,
+    "price": 11.18,
     "marketCap": null
   },
   {
     "symbol": "ADUS",
     "name": "Addus HomeCare Corp.",
     "market": "stocks",
-    "price": 113.27,
+    "price": 114.26,
     "marketCap": null
   },
   {
     "symbol": "ADV",
     "name": "Advantage Solutions Inc. Class A Common Stock",
     "market": "stocks",
-    "price": 28.98,
+    "price": 30.58,
     "marketCap": null
   },
   {
     "symbol": "ADVB",
     "name": "Advanced Biomed Inc. Common Stock",
     "market": "stocks",
-    "price": 6.21,
+    "price": 6.12,
     "marketCap": null
   },
   {
     "symbol": "ADVE",
     "name": "Matthews Asia Dividend Active ETF",
     "market": "stocks",
-    "price": 46.5204,
+    "price": 45.7783,
     "marketCap": null
   },
   {
     "symbol": "ADX",
     "name": "Adams Diversified Equity Fund, Inc",
     "market": "stocks",
-    "price": 26.04,
+    "price": 25.8,
     "marketCap": null
   },
   {
     "symbol": "ADXN",
     "name": "Addex Therapeutics Ltd American Depositary Shares",
     "market": "stocks",
-    "price": 3.13,
+    "price": 3.18,
     "marketCap": null
   },
   {
@@ -1620,182 +1620,182 @@
     "symbol": "AEBI",
     "name": "Aebi Schmidt Holding AG Common Stock",
     "market": "stocks",
-    "price": 10.95,
+    "price": 11.03,
     "marketCap": null
   },
   {
     "symbol": "AEC",
     "name": "Anfield Energy Inc. Common Shares",
     "market": "stocks",
-    "price": 3.35,
+    "price": 3.24,
     "marketCap": null
   },
   {
     "symbol": "AEE",
     "name": "Ameren Corporation",
     "market": "stocks",
-    "price": 101.32,
+    "price": 101.84,
     "marketCap": null
   },
   {
     "symbol": "AEF",
     "name": "abrdn Emerging Markets ex-China Fund, Inc.",
     "market": "stocks",
-    "price": 9.47,
+    "price": 9.26,
     "marketCap": null
   },
   {
     "symbol": "AEFC",
     "name": "Aegon Funding Company LLC 5.10% Subordinated Notes due 2049",
     "market": "stocks",
-    "price": 17.33,
+    "price": 17.34,
     "marketCap": null
   },
   {
     "symbol": "AEG",
     "name": "Aegon Ltd.",
     "market": "stocks",
-    "price": 8.35,
+    "price": 8.27,
     "marketCap": null
   },
   {
     "symbol": "AEHG",
     "name": "Leverage Shares 2X Long AEHR Daily ETF",
     "market": "stocks",
-    "price": 6.98,
+    "price": 6.63,
     "marketCap": null
   },
   {
     "symbol": "AEHL",
     "name": "Antelope Enterprise Holdings Limited Class A Ordinary Shares",
     "market": "stocks",
-    "price": 12.32,
+    "price": 11.35,
     "marketCap": null
   },
   {
     "symbol": "AEHR",
     "name": "Aehr Test Systems",
     "market": "stocks",
-    "price": 89.37,
+    "price": 87.21,
     "marketCap": null
   },
   {
     "symbol": "AEI",
     "name": "Alset Inc. Common Stock (TX)",
     "market": "stocks",
-    "price": 0.6501,
+    "price": 0.6903,
     "marketCap": null
   },
   {
     "symbol": "AEIS",
     "name": "Advanced Energy Industries Inc",
     "market": "stocks",
-    "price": 292.25,
+    "price": 284.24,
     "marketCap": null
   },
   {
     "symbol": "AELV",
     "name": "Harbor AlphaEdge Large Cap Value ETF",
     "market": "stocks",
-    "price": 26.22,
+    "price": 26.3837,
     "marketCap": null
   },
   {
     "symbol": "AEM",
     "name": "Agnico Eagle Mines Ltd.",
     "market": "stocks",
-    "price": 180.39,
+    "price": 183.87,
     "marketCap": null
   },
   {
     "symbol": "AEMC",
     "name": "Harbor AlphaEdge Mid Cap Core ETF",
     "market": "stocks",
-    "price": 19.8292,
+    "price": 19.9799,
     "marketCap": null
   },
   {
     "symbol": "AEMD",
     "name": "AETHLON MEDICAL INC",
     "market": "stocks",
-    "price": 6.07,
+    "price": 6.01,
     "marketCap": null
   },
   {
     "symbol": "AEMG",
     "name": "Harbor AlphaEdge Mid Cap Growth ETF",
     "market": "stocks",
-    "price": 20.0403,
+    "price": 20.0614,
     "marketCap": null
   },
   {
     "symbol": "AEMV",
     "name": "Harbor AlphaEdge Mid Cap Value ETF",
     "market": "stocks",
-    "price": 19.4284,
+    "price": 19.6766,
     "marketCap": null
   },
   {
     "symbol": "AENT",
     "name": "Alliance Entertainment Holding Corporation Class A Common Stock",
     "market": "stocks",
-    "price": 4.5,
+    "price": 4.52,
     "marketCap": null
   },
   {
     "symbol": "AENTW",
     "name": "Alliance Entertainment Holding Corporation Warrants",
     "market": "stocks",
-    "price": 0.1951,
+    "price": 0.15,
     "marketCap": null
   },
   {
     "symbol": "AEO",
     "name": "American Eagle Outfitters",
     "market": "stocks",
-    "price": 17.66,
+    "price": 17.97,
     "marketCap": null
   },
   {
     "symbol": "AEON",
     "name": "AEON Biopharma, Inc.",
     "market": "stocks",
-    "price": 0.31125,
+    "price": 0.31,
     "marketCap": null
   },
   {
     "symbol": "AEP",
     "name": "American Electric Power Company, Inc.",
     "market": "stocks",
-    "price": 122.08,
+    "price": 122.32,
     "marketCap": null
   },
   {
     "symbol": "AER",
     "name": "Aercap Holdings N.V.",
     "market": "stocks",
-    "price": 142.56,
+    "price": 142.81,
     "marketCap": null
   },
   {
     "symbol": "AERO",
     "name": "Grupo Aeromexico, S.A.B. de C.V. American Depositary Shares (each representing ten (10) Common Shares)",
     "market": "stocks",
-    "price": 16.33,
+    "price": 15.78,
     "marketCap": null
   },
   {
     "symbol": "AERT",
     "name": "Aeries Technology, Inc. Class A Ordinary Share",
     "market": "stocks",
-    "price": 6.92,
+    "price": 7.04,
     "marketCap": null
   },
   {
     "symbol": "AERTW",
     "name": "Aeries Technology, Inc. Warrant",
     "market": "stocks",
-    "price": 0.0155,
+    "price": 0.015,
     "marketCap": null
   },
   {
@@ -1809,35 +1809,35 @@
     "symbol": "AESB",
     "name": "Harbor AlphaEdge Small Cap Core ETF",
     "market": "stocks",
-    "price": 19.4622,
+    "price": 19.561,
     "marketCap": null
   },
   {
     "symbol": "AESG",
     "name": "Harbor AlphaEdge Small Cap Growth ETF",
     "market": "stocks",
-    "price": 19.4904,
+    "price": 19.4662,
     "marketCap": null
   },
   {
     "symbol": "AESI",
     "name": "Atlas Energy Solutions Inc.",
     "market": "stocks",
-    "price": 12.46,
+    "price": 12.16,
     "marketCap": null
   },
   {
     "symbol": "AESL",
     "name": "Harbor AlphaEdge Small Cap Value ETF",
     "market": "stocks",
-    "price": 19.469,
+    "price": 19.6619,
     "marketCap": null
   },
   {
     "symbol": "AESP",
     "name": "Aeon Acquisition I Corp. Class A Ordinary Shares",
     "market": "stocks",
-    "price": 9.99,
+    "price": 9.98,
     "marketCap": null
   },
   {
@@ -1851,7 +1851,7 @@
     "symbol": "AESPU",
     "name": "Aeon Acquisition I Corp. Units",
     "market": "stocks",
-    "price": 10.1999,
+    "price": 10.2101,
     "marketCap": null
   },
   {
@@ -1865,98 +1865,98 @@
     "symbol": "AESR",
     "name": "Anfield U.S. Equity Sector Rotation ETF",
     "market": "stocks",
-    "price": 20.19,
+    "price": 20.04,
     "marketCap": null
   },
   {
     "symbol": "AEVA",
     "name": "Aeva Technologies, Inc.",
     "market": "stocks",
-    "price": 14.34,
+    "price": 13.69,
     "marketCap": null
   },
   {
     "symbol": "AEXA",
     "name": "American Exceptionalism Acquisition Corp. A",
     "market": "stocks",
-    "price": 10.85,
+    "price": 10.83,
     "marketCap": null
   },
   {
     "symbol": "AEYE",
     "name": "AudioEye, Inc. Common Stock",
     "market": "stocks",
-    "price": 6.95,
+    "price": 6.84,
     "marketCap": null
   },
   {
     "symbol": "AFB",
     "name": "Alliance National Municipal Income Fund, Inc.",
     "market": "stocks",
-    "price": 9.31,
+    "price": 9.37,
     "marketCap": null
   },
   {
     "symbol": "AFCG",
     "name": "Advanced Flower Capital Inc. Common Stock",
     "market": "stocks",
-    "price": 3.175,
+    "price": 3.17,
     "marketCap": null
   },
   {
     "symbol": "AFDM",
     "name": "First Trust Exchange-Traded Fund III First Trust Active Factor International ETF",
     "market": "stocks",
-    "price": 88.2578,
+    "price": 88.429,
     "marketCap": null
   },
   {
     "symbol": "AFEM",
     "name": "First Trust Exchange-Traded Fund III First Trust Active Factor Emerging Markets ETF",
     "market": "stocks",
-    "price": 98.5653,
+    "price": 97.0887,
     "marketCap": null
   },
   {
     "symbol": "AFG",
     "name": "American Financial Group, Inc.",
     "market": "stocks",
-    "price": 139.02,
+    "price": 141.98,
     "marketCap": null
   },
   {
     "symbol": "AFGB",
     "name": "American Financial Group, Inc. 5.875% Subordinated Debentures due 2059",
     "market": "stocks",
-    "price": 22.03,
+    "price": 22.08,
     "marketCap": null
   },
   {
     "symbol": "AFGC",
     "name": "American Financial Group, Inc. 5.125% Subordinated Debentures due 2059",
     "market": "stocks",
-    "price": 18.82,
+    "price": 18.68,
     "marketCap": null
   },
   {
     "symbol": "AFGD",
     "name": "American Financial Group, Inc. 5.625% Subordinated Debentures due 2060",
     "market": "stocks",
-    "price": 22.43,
+    "price": 22.44,
     "marketCap": null
   },
   {
     "symbol": "AFGE",
     "name": "American Financial Group, Inc. 4.500% Subordinated Debentures due 2060",
     "market": "stocks",
-    "price": 16.83,
+    "price": 16.81,
     "marketCap": null
   },
   {
     "symbol": "AFGR",
     "name": "First Trust Active Factor Large Cap Growth ETF",
     "market": "stocks",
-    "price": 38.8897,
+    "price": 38.5183,
     "marketCap": null
   },
   {
@@ -1970,14 +1970,14 @@
     "symbol": "AFIX",
     "name": "Allspring Broad Market Core Bond ETF",
     "market": "stocks",
-    "price": 23.595,
+    "price": 23.685,
     "marketCap": null
   },
   {
     "symbol": "AFJK",
     "name": "Aimei Health Technology Co., Ltd Ordinary Share",
     "market": "stocks",
-    "price": 12.12,
+    "price": 12.1,
     "marketCap": null
   },
   {
@@ -2005,84 +2005,84 @@
     "symbol": "AFL",
     "name": "Aflac Inc.",
     "market": "stocks",
-    "price": 112.74,
+    "price": 114.94,
     "marketCap": null
   },
   {
     "symbol": "AFLG",
     "name": "First Trust Active Factor Large Cap ETF",
     "market": "stocks",
-    "price": 45.03,
+    "price": 45.09,
     "marketCap": null
   },
   {
     "symbol": "AFMC",
     "name": "First Trust Active Factor Mid Cap ETF",
     "market": "stocks",
-    "price": 40.11,
+    "price": 40.3,
     "marketCap": null
   },
   {
     "symbol": "AFOS",
     "name": "ARS Focused Opportunity Strategy ETF",
     "market": "stocks",
-    "price": 46.0207,
+    "price": 45.6114,
     "marketCap": null
   },
   {
     "symbol": "AFRI",
     "name": "Forafric Global PLC Ordinary Shares",
     "market": "stocks",
-    "price": 12.25,
+    "price": 12.5,
     "marketCap": null
   },
   {
     "symbol": "AFRIW",
     "name": "Forafric Global PLC Warrants",
     "market": "stocks",
-    "price": 1.83,
+    "price": 2.12,
     "marketCap": null
   },
   {
     "symbol": "AFRM",
     "name": "Affirm Holdings, Inc. Class A Common Stock",
     "market": "stocks",
-    "price": 75.31,
+    "price": 77.15,
     "marketCap": null
   },
   {
     "symbol": "AFRU",
     "name": "T-REX 2X Long AFRM Daily Target ETF",
     "market": "stocks",
-    "price": 9.92,
+    "price": 10.38,
     "marketCap": null
   },
   {
     "symbol": "AFSC",
     "name": "abrdn Focused U.S. Small Cap Active ETF",
     "market": "stocks",
-    "price": 36.612,
+    "price": 36.618,
     "marketCap": null
   },
   {
     "symbol": "AFSM",
     "name": "First Trust Active Factor Small Cap ETF",
     "market": "stocks",
-    "price": 39.59,
+    "price": 39.8138,
     "marketCap": null
   },
   {
     "symbol": "AFYA",
     "name": "Afya Limited Class A Common Shares",
     "market": "stocks",
-    "price": 13.9,
+    "price": 14.15,
     "marketCap": null
   },
   {
     "symbol": "AG",
     "name": "FIRST MAJESTIC SILVER CORP",
     "market": "stocks",
-    "price": 16.65,
+    "price": 16.98,
     "marketCap": null
   },
   {
@@ -2096,7 +2096,7 @@
     "symbol": "AGCC",
     "name": "Agencia Comercial Spirits Ltd Class A Ordinary Shares",
     "market": "stocks",
-    "price": 15.5,
+    "price": 14.785,
     "marketCap": null
   }
 ]
